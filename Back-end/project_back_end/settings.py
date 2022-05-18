@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # 3rd party
     'django_extensions',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     
     # DRF auth
     'dj_rest_auth',
