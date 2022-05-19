@@ -1,11 +1,12 @@
 <template>
   <div>
-    NowPlayingMovieView
+    CommentListForm
   </div>
 </template>
 
 <script>
 export default {
+  name: 'CommentListForm',
   
 }
 </script>

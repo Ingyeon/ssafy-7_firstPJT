@@ -1,12 +1,12 @@
 <template>
-  <div>
-    MovieCard
-  </div>
+  <form action="">
+    <div>ReviewForm</div>
+  </form>
 </template>
 
 <script>
 export default {
-  name: 'MovieCard'
+  name: 'ReviewForm'
 }
 </script>
 
