@@ -10,10 +10,9 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
-    release_date = models.DateField()
-    popularity = models.FloatField()
-    overview = models.TextField()
-    poster_path = models.CharField(max_length=200)
-    genres = models.ManyToManyField(Genre,related_name='genre')
-    movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie')
-    
+    # release_date = models.DateField()
+    # popularity = models.FloatField()
+    # overview = models.TextField()
+    # poster_path = models.CharField(max_length=200)
+    # genres = models.ManyToManyField(Genre,related_name='genre')
+    # movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie')
