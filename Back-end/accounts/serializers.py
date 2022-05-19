@@ -6,5 +6,5 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('pk', 'username', 'email', 'like_reviews', 'reviews','like_movie','like_users')
+        fields = ('pk', 'username', 'email', 'like_reviews', 'reviews','like_movie','followers')
         
