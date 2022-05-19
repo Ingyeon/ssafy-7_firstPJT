@@ -167,9 +167,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         # 모두에게 허용 // 디버깅 및 테스트 때 바꾸는 용도
-        # 'rest_framework.permissions.AllowAny', 
+        'rest_framework.permissions.AllowAny', 
 
         # 인증된 사용자만 접근 가능 / 비인증 사용자는 401 에러 발생
-        'rest_framework.permissions.IsAuthenticated'
+        # 'rest_framework.permissions.IsAuthenticated'
     ]
 }
