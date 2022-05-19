@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 import requests
@@ -6,6 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import MovieSerializer
 from .models import Movie,Genre
+import json
+
 
 # Create your views here.
 
@@ -19,7 +22,15 @@ def movie_API():
         'region': 'KR',
     }
     movies = requests.get(url + path+'?',params=params).json()
-    return movies
+    
+    for movie in movies:
+        instance = Movie.objects.create(
+        title = movie['title'],
+        )
+    instance.save()
+    print(instance)
+    
+    return instance
 
 # 현재 문제: json을 파이썬의 딕셔너리 형태로 파싱해서 모델로 불러오기
 
@@ -32,3 +43,4 @@ def movie_list(request):
         return Response(movies)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
+

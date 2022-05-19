@@ -5,7 +5,7 @@ from movies.models import Movie
 # Create your models here.
 
 class Review(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='review')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='reviews')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='movie_review')
     title = models.CharField(max_length=100)
     rank = models.FloatField()
