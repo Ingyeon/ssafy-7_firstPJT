@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import MovieSerializer
 from .models import Movie,Genre
-from .component import movie_API
+from .component import movie_API, now_movie_API
 
 # Create your views here.
 
@@ -18,5 +18,3 @@ def movie_list(request):
         return Response(serializer.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-
