@@ -7,23 +7,21 @@
       <router-link to="/about">About</router-link>
     </nav> 
     -->
-    <NowPlayingMovieView/>
-    <MovieListView/>
+    <MovieList/>
     <router-view/>
   </div>
 </template>
 
 <script>
   // import Navbar from '@/components/Navbar.vue'
-  import NowPlayingMovieView from '@/components/NowPlayingMovieView.vue'
-  import MovieListView from '@/components/MovieListView.vue'
+  import MovieList from '@/components/MovieList.vue'
 
   export default {
     name: 'App',
     components: {
       // navbar
-      NowPlayingMovieView,
-      MovieListView
+
+      MovieList
     }
   }
 </script>
