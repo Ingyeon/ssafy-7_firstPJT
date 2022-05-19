@@ -13,6 +13,8 @@ def movie_API():
     }
     movies = requests.get(url + path+'?',params=params).json()
     
+    # 이 부분이 json 데이터를 장고의 데이터 형식으로 파싱시키기 위함입니다.
+    # instance 내부의 변수명은 model의 필드명이니 이 부분은 맞게 넣으시면 됩니다.
     for movie in movies['results']:
         instance = Movie.objects.create(
         title = movie['title'],
@@ -25,6 +27,26 @@ def movie_API():
         )
         instance.save()
     return movies
+
+# 장르명 담을 API
+def genre_API():
+    url = 'https://api.themoviedb.org/3'
+    path = '/genre/movie/list'
+    params = {
+        'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
+        'language': 'ko',
+        'region': 'KR',
+    }
+    genres = requests.get(url + path+'?',params=params).json()
+    
+    for genre in genres['genres']:
+        instance = Genre.objects.create(
+    name = genre['name'],
+    genre_id = genre['id'],
+    )
+
+    instance.save()
+    return genres
 
 
 # 현재 문제 -> model명 동일하면 model 뒤에 들어가는데 이거 때문에 model을 더 만들어야 하나? 
@@ -55,12 +77,3 @@ def movie_API():
 #     return movies
 
 
-# 장르명 담을 API
-# def genre_API():
-#     url = 'https://api.themoviedb.org/3'
-#     path = '/genre/movie/list'
-#     params = {
-#         'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
-#         'language': 'ko',
-#         'region': 'KR',
-#     }    

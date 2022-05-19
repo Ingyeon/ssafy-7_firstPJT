@@ -6,6 +6,7 @@ from django.db import models
 
 class Genre(models.Model):
     name = models.CharField(max_length=50)
+    genre_id = models.IntegerField()
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
@@ -17,4 +18,3 @@ class Movie(models.Model):
     genre_id = models.IntegerField()
     genres = models.ManyToManyField(Genre,related_name='genre')
     movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie')
-    
