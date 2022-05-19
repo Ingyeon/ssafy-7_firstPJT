@@ -3,6 +3,5 @@ from . import views
 
 app_name = 'community'
 
-
 urlpatterns = [
 ]
