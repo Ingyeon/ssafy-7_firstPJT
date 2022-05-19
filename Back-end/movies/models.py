@@ -1,4 +1,5 @@
 from platform import release
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -14,3 +15,5 @@ class Movie(models.Model):
     overview = models.TextField()
     poster_path = models.CharField(max_length=200)
     genres = models.ManyToManyField(Genre,related_name='genre')
+    movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie')
+    
