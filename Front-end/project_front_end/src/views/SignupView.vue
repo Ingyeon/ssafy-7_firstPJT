@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { mapActions, /*mapGetters*/ } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
   import AccountErrorList from '@/components/AccountErrorList.vue'
 
   export default {
@@ -42,9 +42,9 @@
         }
       }
     },
-    // computed: {
-    //   ...mapGetters(['authError'])
-    // },
+    computed: {
+      ...mapGetters(['authError'])
+    },
     methods: {
       ...mapActions(['signup'])
     },

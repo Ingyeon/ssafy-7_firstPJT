@@ -9,7 +9,7 @@ export default {
     token: localStorage.getItem('token') || '' ,
     currentUser: {},
     profile: {},
-    authError: null,
+    authError: '',
   },
  
   getters: {

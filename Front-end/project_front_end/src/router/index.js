@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
+// import store from '../store'
 
-import App from '@/App.vue'
+// import App from '@/App.vue'
 
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
@@ -42,11 +42,11 @@ const routes = [
     name: 'profile',
     component: ProfileView
   },
-  {
-    path: '/',  
-    name: 'main',
-    component: App
-  },
+  // {
+  //   path: '/',  
+  //   name: 'main',
+  //   component: App
+  // },
   {
     path: '/community',  
     name: 'community',
@@ -95,27 +95,27 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  // 이전 페이지에서 발생한 에러메시지 삭제
-  store.commit('SET_AUTH_ERROR', null)
+// router.beforeEach((to, from, next) => {
+//   // 이전 페이지에서 발생한 에러메시지 삭제
+//   store.commit('SET_AUTH_ERROR', null)
 
-  const { isLoggedIn } = store.getters
+//   const { isLoggedIn } = store.getters
 
-  const noAuthPages = ['login', 'signup']
+//   const noAuthPages = ['login', 'signup']
 
-  const isAuthRequired = !noAuthPages.includes(to.name)
+//   const isAuthRequired = !noAuthPages.includes(to.name)
 
-  if (isAuthRequired && !isLoggedIn) {
-    alert('Require Login. Redirecting..')
-    next({ name: 'login' })
-  } else {
-    next()
-  }
+//   if (isAuthRequired && !isLoggedIn) {
+//     alert('Require Login. Redirecting..')
+//     next({ name: 'login' })
+//   } else {
+//     next()
+//   }
 
-  if (!isAuthRequired && isLoggedIn) {
-    next({ name: 'articles' })
-  }
-})
+//   if (!isAuthRequired && isLoggedIn) {
+//     next({ name: 'articles' })
+//   }
+// })
 
 /*
 Navigation Guard 설정
