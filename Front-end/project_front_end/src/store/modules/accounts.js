@@ -1,5 +1,6 @@
 import router from '@/router'
-
+import axios from 'axios'
+import drf from '@/api/drf'
 
 export default {
   state: {
@@ -54,8 +55,7 @@ export default {
           에러 메시지 표시
       */
       axios({
-        url: 'http://localhost:8000/api/v1/accounts/login/',
-        // drf.accounts.login(), // url 주소 -> drf 만들어지면 바꿀거임
+        url: drf.accounts.login(), // url 주소 -> drf 만들어지면 바꿀거임
         method: 'post',
         data: credentials
       })
@@ -70,5 +70,32 @@ export default {
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
+    signup({ commit, dispatch }, credentials) {
+      /* 
+      POST: 사용자 입력정보를 signup URL로 보내기
+        성공하면
+          응답 토큰 저장
+          현재 사용자 정보 받기
+          메인 페이지(ArticleListView)로 이동
+        실패하면
+          에러 메시지 표시
+      */
+      axios({
+        url: drf.accounts.signup(),
+        method: 'post',
+        data: credentials
+      })
+        .then(res => {
+          const token = res.data.key
+          dispatch('saveToken', token)
+          //dispatch('fetchCurrentUser')
+          router.push({ name: 'articles' })
+        })
+        .catch(err => {
+          console.error(err.response.data)
+          commit('SET_AUTH_ERROR', err.response.data)
+        })
+    },
+
   },
 }
