@@ -15,6 +15,8 @@ def movie_API():
     
     # 이 부분이 json 데이터를 장고의 데이터 형식으로 파싱시키기 위함입니다.
     # instance 내부의 변수명은 model의 필드명이니 이 부분은 맞게 넣으시면 됩니다.
+    
+    Movie.objects.all().delete()
     for movie in movies['results']:
         instance = Movie.objects.create(
         title = movie['title'],
@@ -38,15 +40,16 @@ def genre_API():
         'region': 'KR',
     }
     genres = requests.get(url + path+'?',params=params).json()
-    
+    Genre.objects.all().delete()
     for genre in genres['genres']:
         instance = Genre.objects.create(
     name = genre['name'],
     genre_id = genre['id'],
     )
-
     instance.save()
     return genres
+
+
 
 
 # 현재 문제 -> model명 동일하면 model 뒤에 들어가는데 이거 때문에 model을 더 만들어야 하나? 
