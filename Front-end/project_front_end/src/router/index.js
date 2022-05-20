@@ -15,6 +15,7 @@ import MovieGenreView from '@/views/MovieGenreView.vue'
 import ReviewCreateView from '@/views/ReviewCreateView.vue'
 import ReviewDetailView from '@/views/ReviewDetailView.vue'
 import ReviewEditView from '@/views/ReviewEditView.vue'
+import NotFound404 from '@/views/NotFound404.vue'
 
 
 Vue.use(VueRouter)
@@ -74,6 +75,15 @@ const routes = [
     path: '/community/:reviewId/edit',  
     name: 'reviewEdit',
     component: ReviewEditView
+  },
+  {
+    path: '/404',
+    name: 'NotFound404',
+    component: NotFound404
+  },
+  {
+    path: '*',
+    redirect: '/404'
   },
 
 ]
