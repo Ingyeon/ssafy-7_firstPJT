@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:8000/'
+const HOST = 'http://localhost:8000/api/v1/'
 
 const ACCOUNTS = 'accounts/'
 const COMMUNITY = 'community/'
@@ -25,7 +25,7 @@ export default {
     comments: reviewPk => HOST + COMMUNITY + `${reviewPk}/` + COMMENTS, // 댓글 전체 목록
     comment: (reviewPk, commentPk) => HOST + COMMUNITY + `${reviewPk}/` + COMMENTS + `${commentPk}/`, // 단일 댓글
   },
-movies: {
+  movies: {
     movies: () => HOST + MOVIES,
     // 문제 발생시 백엔드 movies/ 관련 코드 및 아래 코드 movie_pk로 수정
     movie: movieId => HOST + MOVIES + 'detail/' + `${movieId}/`,  // 영화 세부 정보

@@ -4,7 +4,6 @@
 
     <AccountErrorList v-if="authError"></AccountErrorList>
 
-
     <form @submit.prevent="login(credentials)">
       <div>
         <label for="username">username: </label>
