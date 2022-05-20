@@ -30,6 +30,7 @@ movies: {
     // 문제 발생시 백엔드 movies/ 관련 코드 및 아래 코드 movie_pk로 수정
     movie: movieId => HOST + MOVIES + 'detail/' + `${movieId}/`,  // 영화 세부 정보
     genres: () => HOST + MOVIES + 'genre/',  // 장르 정보들, 세부명들의 필요성은 추후 재고
-}
+    likeMovie: movieId => HOST + MOVIES + `${movieId}/` + 'like/', // 영화 좋아요
+},
 
 }

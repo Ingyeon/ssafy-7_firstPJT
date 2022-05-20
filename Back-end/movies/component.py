@@ -50,8 +50,6 @@ def genre_API():
     return genres
 
 
-
-
 # 현재 문제 -> model명 동일하면 model 뒤에 들어가는데 이거 때문에 model을 더 만들어야 하나? 
 # 더 복잡해질텐데 어떻게 하는게 좋을지...
 # 현재 상영중인 영화 API  -> 현재는 안쓰기

@@ -28,10 +28,28 @@ def genre_list(request):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 def movie_detail(request,movie_id):
     movie = get_object_or_404(Movie, movie_id=movie_id)
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
+
+@api_view(['POST'])
+def like_movie(request,movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    user = request.user
+    
+    # 영화 좋아요 했다면 좋아요 취소
+    if movie.movie_like.filter(pk=user.pk).exist():
+        movie.movie_like.remove(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
+    # 아니라면 좋아요
+    else:
+        movie.movie_like.add(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
+        
+    
+    
