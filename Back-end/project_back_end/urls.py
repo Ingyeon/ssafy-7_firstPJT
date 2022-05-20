@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from accounts import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('community/', include('community.urls')),
     path('movies/', include('movies.urls')),
+    
+    # rest_auth token 인증용 path
+    path('accounts/', include('dj_rest_auth.urls')),
+    path('accounts/signup', include('dj_rest_auth.registration.urls')),
     
 ]
