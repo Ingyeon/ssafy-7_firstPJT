@@ -77,11 +77,11 @@ export default {
     },
 
     // 리뷰 수정
-    updatereview({ commit, getters }, { pk, title, content}) {
+    updatereview({ commit, getters }, { pk, title, content, movie }) {
       axios({
         url: drf.community.review(pk),
         method: 'put',
-        data: { title, content },
+        data: { title, content, movie },
         headers: getters.authHeader,
       })
         .then(res => {
