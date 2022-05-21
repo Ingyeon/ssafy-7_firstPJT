@@ -31,11 +31,11 @@ export default {
             .catch(err => console.error(err.response))
         },
         // 개별 영화 state
-        fetchMovie({commit, getters},movieId){
+        fetchMovie({commit /*, getters*/},movieId){
             axios({
                 url: drf.movies.movie(movieId),
                 method: 'get',
-                headers: getters.authHeader,
+                // headers: getters.authHeader, // 아직 인증여부 필요 없어서 일단은 주석처리함
             })
             .then(res => commit('SET_MOVIE', res.data))
             .catch(err => {

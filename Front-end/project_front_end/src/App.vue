@@ -7,8 +7,8 @@
       <router-link to="/about">About</router-link>
     </nav> 
     -->
+    <router-view/>
     <MovieList/>
-    <!-- <router-view/> -->
   </div>
 </template>
 
