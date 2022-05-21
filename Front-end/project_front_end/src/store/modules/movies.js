@@ -22,11 +22,10 @@ export default {
   
     actions: {
         // 영화 전체 목록 state 저장
-        fetchMovies({commit, getters}){
+        fetchMovies({ commit }){
             axios({
                 url: drf.movies.movies(),
                 method: 'get',
-                headers: getters.authHeader,
             })
             .then(res => commit('SET_MOVIES', res.data)) 
             .catch(err => console.error(err.response))

@@ -1,5 +1,6 @@
 <template>
   <div>
+    profile
     <!-- user 정보 -->
 
     <!-- 좋아요, 찜한 영화 리스트 -->

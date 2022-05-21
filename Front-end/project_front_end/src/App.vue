@@ -8,7 +8,7 @@
     </nav> 
     -->
     <MovieList/>
-    <router-view/>
+    <!-- <router-view/> -->
   </div>
 </template>
 
@@ -20,7 +20,6 @@
     name: 'App',
     components: {
       // navbar
-
       MovieList
     }
   }
