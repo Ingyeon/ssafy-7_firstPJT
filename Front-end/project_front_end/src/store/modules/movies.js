@@ -7,17 +7,20 @@ export default {
         movies: [],
         movie: [],
         genre: [],
+        similar: [],
     },
     getters: {
         movies: state => state.movies,
         movie: state => state.movie,
         genre: state => state.genre,
+        similar: state => state.similar,
     },
     
     mutations: {
         SET_MOVIES: (state,movies) => state.movies = movies,
         SET_MOVIE: (state, movie) => state.movie = movie,
         SET_GENRE: (state,genre) => state.genre = genre,
+        SET_SIMILAR: (state,similar) => state.similar = similar,
     },
   
     actions: {
@@ -45,14 +48,21 @@ export default {
                 }
             })
         },
-        // 전체 장르 목록 state
-        fetchGenre({commit, getters}){
+        // 장르별 영화 목록 state 저장
+        fetchGenre({commit},genreId){
             axios({
-                url: drf.movies.genres(),
+                url: drf.movies.genres(genreId),
                 method: 'get',
-                headers: getters.authHeader,
             })
             .then(res => commit('SET_GENRE', res.data))
+            .catch(err => console.error(err.response))
+        },
+        fetchSimilar({commit},movieId){
+            axios({
+                url: drf.movies.similar(movieId),
+                method: 'get',
+            })
+            .then(res => commit('SET_SIMILAR', res.data))
             .catch(err => console.error(err.response))
         },
         

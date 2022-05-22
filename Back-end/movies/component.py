@@ -1,5 +1,5 @@
 import requests
-from .models import Movie,Genre
+from .models import Movie
 
 
 # 인기순 영화 정보 저장
@@ -31,7 +31,7 @@ def movie_API():
         instance.save()
     return movies
 
-# 인기순 영화 정보 저장
+# 비슷한 영화 정보 저장
 def get_similar_movie_API(movie_id):
     url = 'https://api.themoviedb.org/3'
     path = f'/movie/{movie_id}/similar'
@@ -52,31 +52,37 @@ def get_similar_movie_API(movie_id):
         poster_path = movie['poster_path'],
         movie_id = movie['id'],
         genre_id = movie['genre_ids'][0],
-        
         )
         instance.save()
     return movies
 
 
 
-# 장르명 담을 API
-def genre_API():
+# 장르별 영화 API
+def genre_API(genre_id):
     url = 'https://api.themoviedb.org/3'
-    path = '/genre/movie/list'
+    path = '/discover/movie'
     params = {
         'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
         'language': 'ko',
         'region': 'KR',
+        'with_genres': genre_id,
     }
-    genres = requests.get(url + path+'?',params=params).json()
-    Genre.objects.all().delete()
-    for genre in genres['genres']:
-        instance = Genre.objects.create(
-    name = genre['name'],
-    genre_id = genre['id'],
-    )
-    instance.save()
-    return genres
+    movies = requests.get(url + path+'?',params=params).json()
+    
+    Movie.objects.all().delete()
+    for movie in movies['results']:
+        instance = Movie.objects.create(
+        title = movie['title'],
+        release_date = movie['release_date'],
+        popularity = movie['popularity'],
+        overview = movie['overview'],
+        poster_path = movie['poster_path'],
+        movie_id = movie['id'],
+        genre_id = movie['genre_ids'][0],
+        )
+        instance.save()
+    return movies
 
 
 # 현재 문제 -> model명 동일하면 model 뒤에 들어가는데 이거 때문에 model을 더 만들어야 하나? 

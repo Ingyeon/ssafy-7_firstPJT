@@ -17,7 +17,7 @@ import ReviewCreateView from '@/views/ReviewCreateView.vue'
 import ReviewDetailView from '@/views/ReviewDetailView.vue'
 import ReviewEditView from '@/views/ReviewEditView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
-import mainView from '@/views/mainView.vue'
+import MainView from '@/views/MainView.vue'
 
 Vue.use(VueRouter)
 
@@ -45,7 +45,7 @@ const routes = [
   {
     path: '/',  
     name: 'main',
-    component: mainView
+    component: MainView
   },
   {
     path: '/community',  

@@ -7,13 +7,14 @@
       영화사이트
     </b-navbar-brand>
       <!-- navbar 링크 목록, b-navbar-nav 내부에 값 넣기 -->
-        <b-nav-item><router-link :to="{ name: 'main' }" class="text-decoration-none">Home</router-link></b-nav-item>
+        <b-nav-item :to="{ name: 'main' }">Home</b-nav-item>
         <!-- 드롭다운 -->
     <b-nav-item-dropdown text="장르" right>
-      <b-dropdown-item href="#">액션</b-dropdown-item>
-      <b-dropdown-item href="#">코미디</b-dropdown-item>
-      <b-dropdown-item href="#">애니메이션</b-dropdown-item>
-      <b-dropdown-item href="#">공포</b-dropdown-item>
+      
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 28 } }">액션</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 35 } }">코미디</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 16 } }">애니메이션</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 27 } }">공포</b-dropdown-item>
     </b-nav-item-dropdown>
           </b-navbar-nav>
 
