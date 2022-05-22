@@ -6,11 +6,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import MovieSerializer,GenreSerializer
 from .models import Movie,Genre
-from .component import movie_API,genre_API
+from .component import movie_API,genre_API,get_similar_movie_API
 
 # Create your views here.
 
-# 서버 켜고 끌 때마다 데이터 중복으로 쌓이는 문제 발생 중
 @api_view(['GET'])
 def movie_list(request):
     movie_API()
@@ -51,5 +50,11 @@ def like_movie(request,movie_id):
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
         
-    
-    
+
+# 추천 알고리즘 - 비슷한 영화 추천
+@api_view(['GET'])
+def similar_movie(request,movie_id):
+    get_similar_movie_API(movie_id)
+    movie_data = Movie.objects.all()
+    serializer = MovieSerializer(movie_data,many=True)
+    return Response(serializer.data)

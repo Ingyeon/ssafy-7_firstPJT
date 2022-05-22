@@ -1,6 +1,5 @@
 <template>
   <div>
-    MovieListView_p
     <!-- <MovieCard/> -->
     <MovieCard v-for="movie in movies" :movie="movie" :key="movie.movieId" />
   </div>

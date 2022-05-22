@@ -17,7 +17,7 @@ import ReviewCreateView from '@/views/ReviewCreateView.vue'
 import ReviewDetailView from '@/views/ReviewDetailView.vue'
 import ReviewEditView from '@/views/ReviewEditView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
-
+import mainView from '@/views/mainView.vue'
 
 Vue.use(VueRouter)
 
@@ -42,11 +42,11 @@ const routes = [
     name: 'profile',
     component: ProfileView
   },
-  // {
-  //   path: '/',  
-  //   name: 'main',
-  //   component: App
-  // },
+  {
+    path: '/',  
+    name: 'main',
+    component: mainView
+  },
   {
     path: '/community',  
     name: 'community',
