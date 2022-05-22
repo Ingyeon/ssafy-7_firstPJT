@@ -18,13 +18,14 @@
           </b-navbar-nav>
 
       <!-- 검색창 -->
-    <b-navbar-nav class="mr-auto">
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2 d-block" placeholder="Search"></b-form-input>
-        <b-button size="sm" class="my-2 my-sm-0 d-block" type="submit">Search</b-button>
+    <b-container fluid is-nav class="d-flex">
+    <b-navbar-nav class="d-flex ml-auto">
+      <b-nav-form class="d-flex ml-auto">
+        <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+        <b-button size="sm" class="my-2 my-sm-0" type="submit">검색</b-button>
       </b-nav-form>
           <!-- if 분기- 로그인되어 있을 때 -->
-        <b-nav-item-dropdown right v-if="isLoggedIn">
+        <b-nav-item-dropdown right v-if="isLoggedIn" class="ml-auto">
           <template #button-content>
             <em>{{username}}</em>
           </template>
@@ -33,7 +34,7 @@
         </b-nav-item-dropdown>
 
           <!-- 로그인 아닐 경우 -->
-          <b-nav-item-dropdown right v-if="!isLoggedIn">
+          <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">
           <template #button-content>
             <em>{{username}}</em>
           </template>
@@ -41,6 +42,7 @@
           <b-dropdown-item href="#">signup</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
+      </b-container>
   </b-navbar>
 </div>
 </template>
