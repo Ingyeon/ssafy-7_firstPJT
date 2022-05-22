@@ -1,6 +1,15 @@
 <!-- 특정 영화 해당하는 리뷰 리스트 -->
 <template>
-  <div>reviewList</div>
+  <div>
+    <div>reviewList</div>
+    <ul>
+      <li v-for="review in reviews" :key="review.pk">
+
+
+      </li>
+    </ul>
+
+  </div>
 </template>
 
 <script>

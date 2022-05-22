@@ -70,7 +70,9 @@ const routes = [
   {
     path: '/community/:reviewId',  
     name: 'reviewDetail',
-    component: ReviewDetailView
+    component: ReviewDetailView,
+    // 임시
+    props: true
   },
   {
     path: '/community/:reviewId/edit',  

@@ -41,6 +41,17 @@ export default {
         .catch(err => console.error(err.response))
     },
 
+    // // 특정 영화 리뷰 목록
+    // fetchMovieReviews({ commit, getters }, { movieId }) {
+    //   axios({
+    //     url: drf.community.reviews(),
+    //     method: 'get',
+    //     headers: getters.authHeader,
+    //   })
+    //     .then(res => commit('SET_REVIEWS', res.data))
+    //     .catch(err => console.error(err.response))
+    // },
+
     // 단일 리뷰
     fetchreview({ commit, getters }, reviewPk) {
 
