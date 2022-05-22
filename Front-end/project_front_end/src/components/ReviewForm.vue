@@ -1,15 +1,15 @@
 <template>
-  <!-- <form action="">
-    <div>ReviewForm</div>
-  </form> -->
     <form @submit.prevent="onSubmit">
       <div>ReviewForm</div>
+      <div>
+        받아온 movieid 정보: {{ $route.params.movieId }}
+      </div>
       <div>
         <label for="title">title: </label>
         <input v-model="newReview.title" type="text" id="title" />
       </div>
       <div>
-        <label for="content">contnet: </label>
+        <label for="content">content: </label>
         <textarea v-model="newReview.content" type="text" id="content"></textarea>
       </div>
       <div>
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       newReview: {
+        movie: this.$route.params.movieId,
         title: this.review.title,
         content: this.review.content,
         rank: this.review.rank,

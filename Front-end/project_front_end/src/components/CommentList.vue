@@ -2,7 +2,7 @@
   <div>
     <CommentListForm/>
     <ul>
-      <CommentListItem/>
+      <CommentListItem v-for="comment in comments" :key="comment.pk"/>
     </ul>
   </div>
 </template>
@@ -16,7 +16,10 @@ export default {
   components: [
     CommentListForm,
     CommentListItem
-  ]
+  ],
+  props: {
+    comments: Array
+  },
 }
 </script>
 

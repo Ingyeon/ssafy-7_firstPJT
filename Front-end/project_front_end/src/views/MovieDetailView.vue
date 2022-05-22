@@ -31,8 +31,9 @@
       </b-card>
     </div>
 
-    <!-- comment -->
-    <ReviewList/>
+    <!-- review -->
+    <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId} }"> 새 리뷰 작성 </router-link>
+    <ReviewList :reviews="review.movie_review"/>
   </div>
 </template>
 
