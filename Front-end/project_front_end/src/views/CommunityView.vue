@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1>Community</h1>
+    <router-link :to="{ name: 'reviewCreate' }">리뷰 작성</router-link>
+    <hr>
     <ul>
       <li v-for="review in reviews" :key="review.pk">
         <!-- 작성자 -->
