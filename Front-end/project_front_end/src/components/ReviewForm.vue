@@ -45,7 +45,7 @@ export default {
 
   methods: {
     ...mapActions(['createreview','updatereview']),
-    onsubmit() {
+    onSubmit() {
       if (this.action === 'create') {
         this.createreview(this.newReview)
       } else if (this.action === 'update') {
