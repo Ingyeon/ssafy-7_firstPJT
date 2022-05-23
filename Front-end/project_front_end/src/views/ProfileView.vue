@@ -6,9 +6,10 @@
 
     <div v-if="profile.pk !== currentUser.pk">
       <!-- 팔로우 버튼 -->
-      <!-- v-if="currentUser in profile.followers" 어케넣지.. -->
-      <button @click="follow(profile.pk)"> 언팔로우 </button>
-      <button @click="follow(profile.pk)"> 팔로우 </button>
+      <!-- v-if="currentUser in profile.followers" v-for랑 v-if 같이쓰지 말라했는데.. -->
+      
+      <button v-if="checkList" @click="follow(profile.pk)"> 언팔로우 </button>
+      <button v-else @click="follow(profile.pk)"> 팔로우 </button>
 
     </div>
 
@@ -41,6 +42,11 @@ export default {
   name: 'ProfileView',
   computed: {
     ...mapGetters(['profile','currentUser']),
+    // 자바스크립트 어케고치기
+    checkList() {
+      console.log(this.profile.followers.some(item => item === this.currentUser.pk))
+      return this.currentUser.pk in this.profile.followers? true : false
+    },
     followerCount() {
       return this.profile.followers?.length
     },
