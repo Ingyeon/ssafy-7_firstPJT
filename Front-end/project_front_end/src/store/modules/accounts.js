@@ -124,5 +124,17 @@ export default {
           commit('SET_PROFILE', res.data)
         })
     },
+
+    follow({ commit, getters }, userPk) {
+
+      axios({
+        url: drf.accounts.follow(userPk),
+        method: 'post',
+        headers: getters.authHeader,
+      })
+        .then(res => commit('SET_PROFILE', res.data))
+        .catch(err => console.error(err.response))
+    },
+
   },
 }

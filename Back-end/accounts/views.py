@@ -16,16 +16,15 @@ def user_profile(request,username):
 
 @api_view(['POST'])
 def follow(request,user_pk):
-    if request.user.is_authenticated:
-        you = get_object_or_404(get_user_model(), pk=user_pk)
-        me = request.user # 로그인 유저가 되어야함.
-        if me != you:
-            if you.followers.filter(pk=me.pk).exists():
-            # if me in you.followers.all():
-                # 언팔로우
-                you.followers.remove(me)
-            else:
-                # 팔로우
-                you.followers.add(me)
-        return redirect('accounts:profile', you.username)
-    return redirect('accounts:login')
+    # if request.user.is_authenticated:
+    you = get_object_or_404(get_user_model(), pk=user_pk)
+    me = request.user # 로그인 유저가 되어야함.
+    if me != you:
+        if you.followers.filter(pk=me.pk).exists():
+            # 언팔로우
+            you.followers.remove(me)
+        else:
+            # 팔로우
+            you.followers.add(me)
+    serializer = ProfileSerializer(you)
+    return Response(serializer.data)

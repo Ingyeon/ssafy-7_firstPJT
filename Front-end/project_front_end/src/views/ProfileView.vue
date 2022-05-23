@@ -1,24 +1,22 @@
 <template>
   <div>
     <!-- user 정보 -->
-    <h1>{{profile.username}}님의 프로필</h1>
+    <h1>{{profile.username}} 님의 프로필</h1>
     <h2> 로그인한 유저 정보 : {{currentUser.username}}</h2>
 
-    <div v-if="profile.id !== currentUser.id">
+    <div v-if="profile.pk !== currentUser.pk">
       <!-- 팔로우 버튼 -->
-      <form>
-        <!-- 버튼 if문 바꿔주기 -->
-        <input v-if="currentUser in profile.followers" type="submit" value = "언팔로우"> 
-        <input v-else type="submit" value = "팔로우">
-      </form>
+      <!-- v-if="currentUser in profile.followers" 어케넣지.. -->
+      <button @click="follow(profile.pk)"> 언팔로우 </button>
+      <button @click="follow(profile.pk)"> 팔로우 </button>
 
     </div>
 
 
     <div>
       <!-- 팔로워 : {{ profile.followers.all|length }} / 팔로우: {{ profile.followings.all|length }} -->
-      팔로워 : {{ profile.followers }} <br>
-      팔로우 : {{ profile.followings }}
+      팔로워 : {{ followerCount }} <br>
+      팔로우 : {{ followingCount }}
     </div>
     
     <!-- 작성한 리뷰 목록-->
@@ -42,10 +40,16 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'ProfileView',
   computed: {
-    ...mapGetters(['profile','currentUser'])
+    ...mapGetters(['profile','currentUser']),
+    followerCount() {
+      return this.profile.followers?.length
+    },
+    followingCount() {
+      return this.profile.followings?.length
+    }
   },
   methods: {
-    ...mapActions(['fetchProfile', 'fetchCurrentUser']),
+    ...mapActions(['fetchProfile', 'fetchCurrentUser','follow']),
   },
   created(){
     const payload = { username: this.$route.params.username }

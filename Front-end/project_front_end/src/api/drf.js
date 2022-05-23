@@ -17,6 +17,8 @@ export default {
     // 아래 코드는 토큰을 발급받은 인증된 유저인지 확인하는 url을 연결합니다.
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
 
+    follow: userPk => HOST + ACCOUNTS + 'profile/' + `${userPk}/` + 'follow/' // follow
+
   },
   community: {
     reviews: () => HOST + COMMUNITY,   // 전체 리뷰 목록
