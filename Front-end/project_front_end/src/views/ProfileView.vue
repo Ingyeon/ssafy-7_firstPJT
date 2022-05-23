@@ -21,7 +21,7 @@
     </div>
     
     <!-- 작성한 리뷰 목록-->
-    <h2>내가 작성한 리뷰</h2>
+    <h2>{{profile.username}} 님이 작성한 리뷰</h2>
     <ul>
       <li v-for="review in profile.reviews" :key="review.pk">
         <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
