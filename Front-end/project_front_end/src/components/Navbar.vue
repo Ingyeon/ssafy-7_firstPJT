@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="d-block">
   <b-navbar type="dark" variant="dark">
     <b-navbar-nav>  
     <b-navbar-brand class="fw-bold">
@@ -12,23 +12,24 @@
     <b-nav-item-dropdown text="장르" right>
       
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 28 } }">액션</b-dropdown-item>
-      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 35 } }">코미디</b-dropdown-item>
-      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 16 } }">애니메이션</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 99 } }">다큐맨터리</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 16 } }" >애니메이션</b-dropdown-item>
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 27 } }">공포</b-dropdown-item>
+      <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 10749 } }">로맨스</b-dropdown-item>
     </b-nav-item-dropdown>
           </b-navbar-nav>
 
       <!-- 검색창 -->
-    <b-container fluid is-nav class="d-flex">
-    <b-navbar-nav class="d-flex ml-auto">
-      <b-nav-form class="d-flex ml-auto">
-        <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-        <b-button size="sm" class="my-2 my-sm-0" type="submit">검색</b-button>
-      </b-nav-form>
+    <b-container fluid is-nav class="d-flex justify-content-end">
+    <b-navbar-nav class="d-flex">
+      <form class="d-flex">
+        <b-form-input size="sm" class="mr-sm-2 my-2" placeholder="Search"></b-form-input>
+        <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit">검색</b-button>
+      </form>
           <!-- if 분기- 로그인되어 있을 때 -->
         <b-nav-item-dropdown right v-if="isLoggedIn" class="ml-auto">
           <template #button-content>
-            <em>{{username}}</em>
+            <em class="text-align-center">{{username}}</em>
           </template>
           <b-dropdown-item href="#">Profile</b-dropdown-item>
           <b-dropdown-item href="#">Logout</b-dropdown-item>
@@ -58,7 +59,7 @@ export default {
     username(){
       return this.currentUser.username ? this.currentUser.username : 'guest'
     },
-  }
+  },
   
 }
 </script>

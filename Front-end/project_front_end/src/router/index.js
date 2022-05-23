@@ -60,7 +60,7 @@ const routes = [
   {
     path: '/movies/:genreId',  
     name: 'genreMovieList',
-    component: MovieGenreView
+    component: MovieGenreView,
   },
   {
     path: '/community/create',  

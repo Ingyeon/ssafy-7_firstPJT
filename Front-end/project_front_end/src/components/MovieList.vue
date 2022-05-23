@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- <MovieCard/> -->
-    <MovieCard v-for="movie in movies" :movie="movie" :key="movie.movieId" />
+    <b-card-group class="d-flex">
+    <MovieCard v-for="movie in movies" :movie="movie" :key="movie.movieId" class='col-3'/>
+    </b-card-group>
   </div>
 </template>
 

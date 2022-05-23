@@ -1,5 +1,6 @@
 <template>
-  <div>장르별영화리스트
+  <div>
+    <p>선택한 장르의 영화 목록입니다.</p>
   <GenreMovieList/>
   </div>
 
@@ -30,8 +31,7 @@ export default {
   },
   created(){
     this.fetchGenre(this.genreId)
-  }
-
+  },
 }
 </script>
 
