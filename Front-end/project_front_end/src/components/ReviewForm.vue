@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       newReview: {
-        movie: this.$route.params.movieId,
         title: this.review.title,
         content: this.review.content,
         rank: this.review.rank,
@@ -44,16 +43,16 @@ export default {
   },
 
   methods: {
-    ...mapActions(['createreview','updatereview']),
+    ...mapActions(['createReview','updateReview']),
     onSubmit() {
       if (this.action === 'create') {
-        this.createreview(this.newReview)
+        this.createReview(this.newReview)
       } else if (this.action === 'update') {
         const payload = {
           pk: this.review.pk,
           ...this.newReview,
         }
-        this.updatereview(payload)
+        this.updateReview(payload)
       }
     }
   }

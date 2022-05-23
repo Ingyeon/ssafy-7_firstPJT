@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db import models
 from django.conf import settings
 from movies.models import Movie
@@ -8,7 +7,6 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='reviews')
     title = models.CharField(max_length=100)
     content = models.TextField()
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='movie_review')
     rank = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

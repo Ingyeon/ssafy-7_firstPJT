@@ -1,6 +1,6 @@
 <template>
   <div>
-    Create Review
+    <h1>새로운 리뷰 작성</h1>
     <ReviewForm :review="review" action="create" />
   </div>
 </template>
@@ -11,9 +11,8 @@
 import ReviewForm from '@/components/ReviewForm.vue'
 export default {
   name: 'ReviewCreateView',
-  components: {
-    ReviewForm
-  },
+  components: 
+    { ReviewForm },
   data() {
     return {
       review: {

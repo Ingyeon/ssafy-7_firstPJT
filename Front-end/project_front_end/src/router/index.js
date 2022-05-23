@@ -68,14 +68,14 @@ const routes = [
     component: ReviewCreateView
   },
   {
-    path: '/community/:reviewId',  
-    name: 'reviewDetail',
+    path: '/community/:reviewPk',  
+    name: 'review',
     component: ReviewDetailView,
     // 임시
     props: true
   },
   {
-    path: '/community/:reviewId/edit',  
+    path: '/community/:reviewPk/edit',  
     name: 'reviewEdit',
     component: ReviewEditView
   },

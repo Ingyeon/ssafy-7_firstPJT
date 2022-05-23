@@ -31,7 +31,7 @@ export default {
 
   actions: {
     // 리뷰 목록
-    fetchreviews({ commit, getters }) {
+    fetchReviews({ commit, getters }) {
       axios({
         url: drf.community.reviews(),
         method: 'get',
@@ -53,7 +53,7 @@ export default {
     // },
 
     // 단일 리뷰
-    fetchreview({ commit, getters }, reviewPk) {
+    fetchReview({ commit, getters }, reviewPk) {
 
       axios({
         url: drf.community.review(reviewPk),
@@ -70,7 +70,7 @@ export default {
     },
 
     // 리뷰 생성
-    createreview({ commit, getters },{movieId, review}) {
+    createReview({ commit, getters },review) {
       
       axios({
         url: drf.community.reviews(),
@@ -81,17 +81,16 @@ export default {
         .then(res => {
           commit('SET_REVIEW', res.data)
           router.push({
-            name: 'community',
+            name: 'review',
             params: { 
-              reviewPk: getters.review.pk,
-              movieId: movieId
+              reviewPk: getters.review.pk
              }
           })
         })
     },
 
     // 리뷰 수정
-    updatereview({ commit, getters }, { pk, title, content, movie }) {
+    updateReview({ commit, getters }, { pk, title, content, movie }) {
       axios({
         url: drf.community.review(pk),
         method: 'put',
@@ -101,14 +100,14 @@ export default {
         .then(res => {
           commit('SET_REVIEW', res.data)
           router.push({
-            name: 'community',
+            name: 'review',
             params: { reviewPk: getters.review.pk }
           })
         })
     },
 
     // 리뷰 삭제
-    deletereview({ commit, getters }, reviewPk) {
+    deleteReview({ commit, getters }, reviewPk) {
 
       if (confirm('리뷰를 삭제할까요?')) {
         axios({
@@ -126,7 +125,7 @@ export default {
     },
 
     // 리뷰 좋아요
-    likereview({ commit, getters }, reviewPk) {
+    likeReview({ commit, getters }, reviewPk) {
 
       axios({
         url: drf.community.likeReview(reviewPk),

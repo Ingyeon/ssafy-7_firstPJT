@@ -5,7 +5,7 @@ from .models import Movie
 # 인기순 영화 정보 저장
 def movie_API():
     url = 'https://api.themoviedb.org/3'
-    path = '/movie/popular'
+    path = '/movie/now_playing'
     params = {
         'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
         'language': 'ko',
