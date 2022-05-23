@@ -35,18 +35,19 @@
     <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link>
     <!-- <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId} }"> 새 리뷰 작성 </router-link> -->
     <!-- <ReviewList :reviews="review.movie_review"/> -->
-    <ReviewList/>
+    <!-- <ReviewList/> -->
   </div>
 </template>
 
 <script>
-import ReviewList from '@/components/ReviewList.vue'
+
+// import ReviewList from '@/components/ReviewList.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'MovieDetailView',
   components: {
-    ReviewList
+    // ReviewList
   },
   data() {
     return {

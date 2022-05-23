@@ -16,8 +16,6 @@ import Navbar from './components/Navbar.vue'
   }
 </script>
 
-
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

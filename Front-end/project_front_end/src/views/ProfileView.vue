@@ -32,7 +32,6 @@
     </ul>
     <!-- 좋아요, 찜한 영화 리스트 -->
 
-
     <!-- 추천 알고리즘 영화리스트 -->
   </div>
 </template>
@@ -46,12 +45,13 @@ export default {
     ...mapGetters(['profile','currentUser'])
   },
   methods: {
-    ...mapActions(['fetchProfile', 'fetchCurrentUser'])
+    ...mapActions(['fetchProfile', 'fetchCurrentUser']),
   },
   created(){
     const payload = { username: this.$route.params.username }
     this.fetchProfile(payload)
   },
+  
 }
 </script>
 

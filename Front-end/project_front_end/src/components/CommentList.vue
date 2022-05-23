@@ -1,9 +1,14 @@
 <template>
-  <div>
-    <CommentListForm/>
+  <div class="comment-list">
+    
     <ul>
-      <CommentListItem v-for="comment in comments" :key="comment.pk"/>
+      <CommentListItem
+        v-for="comment in comments" 
+        :comment="comment" 
+        :key="comment.pk" />
     </ul>
+
+    <CommentListForm/>
   </div>
 </template>
 
@@ -24,5 +29,7 @@ export default {
 </script>
 
 <style>
-
+.comment-list {
+  border: 1px solid blue;
+}
 </style>
