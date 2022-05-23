@@ -42,6 +42,13 @@ const routes = [
     name: 'profile',
     component: ProfileView
   },
+  // 추가 필요한가...??
+  {
+    path: '/profile/:userId/follow',
+    name: 'follow',
+    component: ProfileView // 수정필요
+  },
+  //
   {
     path: '/',  
     name: 'main',
