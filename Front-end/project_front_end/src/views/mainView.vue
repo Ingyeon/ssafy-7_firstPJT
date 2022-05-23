@@ -14,13 +14,13 @@
     >
 
       <b-carousel-slide
-        img-src="https://picsum.photos/1024/480/?image=52"
+        img-src="https://www.lunchbox-productions.com/wp-content/uploads/2021/10/Shows-Like-Carnival-Row-1024x480.jpg"
       ></b-carousel-slide>
 
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
+      <b-carousel-slide img-src="https://www.lunchbox-productions.com/wp-content/uploads/2021/10/Movies-Like-Predestination-1024x480.jpg">
       </b-carousel-slide>
 
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
+      <b-carousel-slide img-src="https://www.lunchbox-productions.com/wp-content/uploads/2021/10/Movies-Like-Miss-Congeniality-1024x480.jpg"></b-carousel-slide>
 
     <!-- 슬라이드 사이즈 조정시 다음과 같이 가능 -->
     <!-- 영화 포스터를 케러셀로 넣을 시 안이쁘고 사이즈가 너무 큽니다. 적당한 다른 이미지를
@@ -31,7 +31,7 @@
             class="d-block img-fluid w-100"
             width="1024"
             height="480"
-            :src="`https://image.tmdb.org/t/p/w300${movies[0].poster_path}`"
+            src="https://maxxolife.com/wp-content/uploads/2021/06/new.jpg"
             alt="image slot"
           >
         </template>

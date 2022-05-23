@@ -31,17 +31,17 @@
           <template #button-content>
             <em class="text-align-center">{{username}}</em>
           </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Logout</b-dropdown-item>
+          <b-dropdown-item :to="{ name:'profile', params: { username: username }}">Profile</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'logout' }">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
 
           <!-- 로그인 아닐 경우 -->
           <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">
           <template #button-content>
-            <em>{{username}}</em>
+            <em>guest</em>
           </template>
-          <b-dropdown-item href="#">Login</b-dropdown-item>
-          <b-dropdown-item href="#">signup</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'login' }">Login</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'signup' }">signup</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       </b-container>
@@ -60,7 +60,6 @@ export default {
       return this.currentUser.username ? this.currentUser.username : 'guest'
     },
   },
-  
 }
 </script>
 

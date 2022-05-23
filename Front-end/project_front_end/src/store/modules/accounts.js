@@ -49,8 +49,8 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          // 메인 경로가 없어 임시적으로 community로 우회했습니다.
-          router.push({ name: 'community' })
+
+          router.push({ name: 'main' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -69,7 +69,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          router.push({ name: 'community' })
+          router.push({ name: 'main' })
         })
         .catch(err => {
           console.error(err.response.data)
