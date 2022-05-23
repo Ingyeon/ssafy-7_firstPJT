@@ -40,7 +40,7 @@ def like_movie(request,movie_id):
         return Response(serializer.data)
         
 
-# 추천 알고리즘 - 비슷한 영화 추천
+# 추천 알고리즘 - 비슷한 영화 추천에 활용
 @api_view(['GET'])
 def similar_movie(request,movie_id):
     get_similar_movie_API(movie_id)

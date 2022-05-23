@@ -1,5 +1,5 @@
 <template>
-  <div class="comment-list">
+  <div>
     
     <ul>
       <CommentListItem
@@ -7,7 +7,6 @@
         :comment="comment" 
         :key="comment.pk" />
     </ul>
-
     <CommentListForm/>
   </div>
 </template>
@@ -18,10 +17,10 @@ import CommentListForm from '@/components/CommentListForm.vue'
 
 export default {
   name: 'CommentList',
-  components: [
+  components: {
     CommentListForm,
     CommentListItem
-  ],
+  },
   props: {
     comments: Array
   },
@@ -29,7 +28,4 @@ export default {
 </script>
 
 <style>
-.comment-list {
-  border: 1px solid blue;
-}
 </style>
