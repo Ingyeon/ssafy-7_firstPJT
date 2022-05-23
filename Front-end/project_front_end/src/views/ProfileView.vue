@@ -1,7 +1,8 @@
 <template>
   <div>
-    profile
+    <h1>{{profile.username}}님의 프로필</h1>
     <!-- user 정보 -->
+    
 
     <!-- 좋아요, 찜한 영화 리스트 -->
 
@@ -12,9 +13,20 @@
 </template>
 
 <script>
-export default {
-  name: 'ProfileView'
+import { mapGetters, mapActions } from 'vuex'
 
+export default {
+  name: 'ProfileView',
+  computed: {
+    ...mapGetters(['profile'])
+  },
+  methods: {
+    ...mapActions(['fetchProfile'])
+  },
+  created(){
+    const payload = { username: this.$route.params.username }
+    this.fetchProfile(payload)
+  },
 }
 </script>
 

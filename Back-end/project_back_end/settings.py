@@ -171,5 +171,5 @@ REST_FRAMEWORK = {
 
         # 인증된 사용자만 접근 가능 / 비인증 사용자는 401 에러 발생
         # 'rest_framework.permissions.IsAuthenticated'
-    ]
+    ],
 }

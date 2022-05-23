@@ -26,7 +26,15 @@
         <b-form-input size="sm" class="mr-sm-2 my-2" placeholder="Search"></b-form-input>
         <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit">검색</b-button>
       </form>
-          <!-- if 분기- 로그인되어 있을 때 -->
+          <!-- if 분기- 로그인 여부 -->
+          <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">
+          <template #button-content>
+            <em>guest</em>
+          </template>
+          <b-dropdown-item :to="{ name: 'login' }">Login</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'signup' }">signup</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <!-- 로그인 아닐 경우 -->
         <b-nav-item-dropdown right v-if="isLoggedIn" class="ml-auto">
           <template #button-content>
             <em class="text-align-center">{{username}}</em>
@@ -35,14 +43,7 @@
           <b-dropdown-item :to="{ name: 'logout' }">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
 
-          <!-- 로그인 아닐 경우 -->
-          <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">
-          <template #button-content>
-            <em>guest</em>
-          </template>
-          <b-dropdown-item :to="{ name: 'login' }">Login</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'signup' }">signup</b-dropdown-item>
-        </b-nav-item-dropdown>
+
       </b-navbar-nav>
       </b-container>
   </b-navbar>
