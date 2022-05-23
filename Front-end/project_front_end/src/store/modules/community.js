@@ -70,7 +70,7 @@ export default {
     },
 
     // 리뷰 생성
-    createreview({ commit, getters }, review) {
+    createreview({ commit, getters },{movieId, review}) {
       
       axios({
         url: drf.community.reviews(),
@@ -82,7 +82,10 @@ export default {
           commit('SET_REVIEW', res.data)
           router.push({
             name: 'community',
-            params: { reviewPk: getters.review.pk }
+            params: { 
+              reviewPk: getters.review.pk,
+              movieId: movieId
+             }
           })
         })
     },
