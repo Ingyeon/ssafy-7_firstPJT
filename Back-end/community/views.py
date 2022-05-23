@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.contrib.auth import get_user_model
 from django.db.models import Count
 
 from rest_framework import status
@@ -9,9 +8,6 @@ from rest_framework.response import Response
 from .models import Review,Comment
 from .serializers.comment import CommentSerializer
 from .serializers.review import ReviewListSerializer,ReviewSerializer
-
-# Create your views here.
-
 
 # Response(status.HTTP_400_BAD_REQUEST)는 api 정상작동 여부 확인 위해 사용
 

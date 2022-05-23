@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+
 from ..models import Review
 from .comment import CommentSerializer
-from movies.serializers import MovieSerializer
+# from movies.serializers import MovieSerializer
 
 User = get_user_model()
 
@@ -17,11 +18,12 @@ class ReviewSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)
     like_users = UserSerializer(read_only=True, many=True)
-    movie = MovieSerializer(read_only=True)
+    # movie = MovieSerializer(read_only=True)
 
     class Meta:
         model = Review
-        fields = ('pk', 'user', 'title', 'content', 'movie', 'rank', 'comments', 'like_users')
+        fields = ('pk', 'user', 'title', 'content', 'comments', 'like_users')
+        # review 작동 하기 위해 rank와 movie 필드 제외함
 
 
 # 글 목록 불러오는 serializer

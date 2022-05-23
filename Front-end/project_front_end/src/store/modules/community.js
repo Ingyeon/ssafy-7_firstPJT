@@ -4,9 +4,6 @@ import router from '@/router'
 
 import _ from 'lodash'
 
-
-// router로 보내지는 경우 임시로 community 메인 화면으로 보냄
-// 핵심 기능 구현 후 리뷰 메인화면에 대해 논의합시다
 export default {
 
   state: {
@@ -40,17 +37,6 @@ export default {
         .then(res => commit('SET_REVIEWS', res.data))
         .catch(err => console.error(err.response))
     },
-
-    // // 특정 영화 리뷰 목록
-    // fetchMovieReviews({ commit, getters }, { movieId }) {
-    //   axios({
-    //     url: drf.community.reviews(),
-    //     method: 'get',
-    //     headers: getters.authHeader,
-    //   })
-    //     .then(res => commit('SET_REVIEWS', res.data))
-    //     .catch(err => console.error(err.response))
-    // },
 
     // 단일 리뷰
     fetchReview({ commit, getters }, reviewPk) {
@@ -90,11 +76,11 @@ export default {
     },
 
     // 리뷰 수정
-    updateReview({ commit, getters }, { pk, title, content, movie }) {
+    updateReview({ commit, getters }, { pk, title, content}) {
       axios({
         url: drf.community.review(pk),
         method: 'put',
-        data: { title, content, movie },
+        data: { title, content },
         headers: getters.authHeader,
       })
         .then(res => {

@@ -1,28 +1,65 @@
 <template>
   <div>
-    <!-- review -->
-    <p>리뷰 제목</p>
-    <p>영화제목</p>
-    <p>작성자</p>
-    <p>리뷰 내용</p>
-    <p>좋아요버튼</p>
-    <!-- comment -->
-    <CommentList/>
+    <h1>{{ review.title }}</h1>
+
+    <p>
+      {{ review.content }}
+    </p>
+    <!-- review Edit/Delete UI -->
+    <div v-if="isAuthor">
+      <router-link :to="{ name: 'reviewEdit', params: { reviewPk } }">
+        <button>Edit</button>
+      </router-link>
+      |
+      <button @click="deleteReview(reviewPk)">Delete</button>
+    </div>
+
+    <!-- review Like UI -->
+    <div>
+      Likeit:
+      <button
+        @click="likeReview(reviewPk)"
+      >{{ likeCount }}</button>
+    </div>
+
+    <hr />
+    <!-- Comment UI -->
+    <comment-list :comments="review.comments"></comment-list>
+
   </div>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import CommentList from '@/components/CommentList.vue'
 
-  export default {
-    name: 'ReviewDetailView',
-    components: {
-      CommentList,
-    }
 
+
+  export default {
+    name: 'reviewDetail',
+    components: { CommentList },
+    data() {
+      return {
+        reviewPk: this.$route.params.reviewPk,
+      }
+    },
+    computed: {
+      ...mapGetters(['isAuthor', 'review']),
+      likeCount() {
+        return this.review.like_users?.length
+      }
+    },
+    methods: {
+      ...mapActions([
+        'fetchReview',
+        'likeReview',
+        'deleteReview',
+      ])
+    },
+    created() {
+      this.fetchReview(this.reviewPk)
+    },
   }
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -9,7 +9,7 @@
       <!-- navbar 링크 목록, b-navbar-nav 내부에 값 넣기 -->
         <b-nav-item :to="{ name: 'main' }">Home</b-nav-item>
         <!-- 드롭다운 -->
-    <b-nav-item-dropdown text="장르" right>
+    <b-nav-item-dropdown text="Genre" right>
       
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 28 } }">액션</b-dropdown-item>
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 99 } }">다큐맨터리</b-dropdown-item>
@@ -17,6 +17,7 @@
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 27 } }">공포</b-dropdown-item>
       <b-dropdown-item :to="{ name: 'genreMovieList', params: { genreId: 10749 } }">로맨스</b-dropdown-item>
     </b-nav-item-dropdown>
+    <b-nav-item :to="{ name: 'community' }">Community</b-nav-item>
           </b-navbar-nav>
 
       <!-- 검색창 -->
@@ -24,7 +25,7 @@
     <b-navbar-nav class="d-flex">
       <form class="d-flex">
         <b-form-input size="sm" class="mr-sm-2 my-2" placeholder="Search"></b-form-input>
-        <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit">검색</b-button>
+        <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit">Search</b-button>
       </form>
           <!-- if 분기- 로그인 여부 -->
           <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">

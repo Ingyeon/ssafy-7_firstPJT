@@ -47,7 +47,7 @@ const routes = [
     name: 'main',
     component: MainView
   },
-  {
+  { // 전체 리뷰 목록
     path: '/community',  
     name: 'community',
     component: CommunityView
@@ -67,7 +67,7 @@ const routes = [
     name: 'reviewCreate',
     component: ReviewCreateView
   },
-  {
+  { // 리뷰 디테일
     path: '/community/:reviewPk',  
     name: 'review',
     component: ReviewDetailView,
@@ -88,7 +88,6 @@ const routes = [
     path: '*',
     redirect: '/404'
   },
-
 ]
 
 const router = new VueRouter({

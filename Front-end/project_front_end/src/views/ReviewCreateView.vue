@@ -19,7 +19,6 @@ export default {
         pk: null,
         title: '',
         content: '',
-        rank: '',
       }
     }
   }

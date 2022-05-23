@@ -2,7 +2,7 @@
     <form @submit.prevent="onSubmit">
       <div>ReviewForm</div>
       <div>
-        받아온 movieid 정보: {{ $route.params.movieId }}
+        <!-- 받아온 movieid 정보: {{ $route.params.movieId }} -->
       </div>
       <div>
         <label for="title">title: </label>
@@ -12,10 +12,10 @@
         <label for="content">content: </label>
         <textarea v-model="newReview.content" type="text" id="content"></textarea>
       </div>
-      <div>
+      <!-- <div>
         <label for="rank">rank: </label>
         <textarea v-model="newReview.rank" type="text" id="content"></textarea>
-      </div>
+      </div> -->
       <div>
         <button>{{ action }}</button>
       </div>
@@ -37,7 +37,7 @@ export default {
       newReview: {
         title: this.review.title,
         content: this.review.content,
-        rank: this.review.rank,
+        // rank: this.review.rank,
       }
     }
   },

@@ -1,4 +1,4 @@
-<!-- 특정 영화 해당하는 리뷰 리스트 -->
+<!-- 특정 영화 해당하는 리뷰 리스트
 <template>
   <div>
     <div>reviewList</div>
@@ -20,4 +20,4 @@
 
 <style>
 
-</style>
+</style> -->

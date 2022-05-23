@@ -17,13 +17,13 @@ export default {
     ReviewForm
   },
   computed: {
-    ...mapGetters(['review','isReview'])
+    ...mapGetters(['review','isReview',])
   },
   methods: {
     ...mapActions(['fetchReview'])
   },
   created() {
-    this.fetchreview(this.$route.params.reviewPk)
+    this.fetchReview(this.$route.params.reviewPk)
   }
 }
 </script>
