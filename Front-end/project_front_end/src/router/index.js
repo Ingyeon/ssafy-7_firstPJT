@@ -18,6 +18,7 @@ import ReviewDetailView from '@/views/ReviewDetailView.vue'
 import ReviewEditView from '@/views/ReviewEditView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
 import MainView from '@/views/MainView.vue'
+import SearchView from '@/views/SearchView.vue'
 
 Vue.use(VueRouter)
 
@@ -44,7 +45,7 @@ const routes = [
   },
   // 추가 필요한가...??
   {
-    path: '/profile/:userId/follow',
+    path: '/profile/:userPk/follow',
     name: 'follow',
     component: ProfileView // 수정필요
   },
@@ -53,6 +54,11 @@ const routes = [
     path: '/',  
     name: 'main',
     component: MainView
+  },
+  { path: '/search/:movieTitle',
+    name: 'search',
+    component: SearchView
+
   },
   { // 전체 리뷰 목록
     path: '/community',  

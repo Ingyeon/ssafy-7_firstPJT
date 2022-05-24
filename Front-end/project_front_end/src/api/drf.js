@@ -17,7 +17,7 @@ export default {
     // 아래 코드는 토큰을 발급받은 인증된 유저인지 확인하는 url을 연결합니다.
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
 
-    follow: username => HOST + ACCOUNTS + 'profile/' + `${username}/` + 'follow/' // follow
+    follow: userPk => HOST + ACCOUNTS + 'profile/' + `${userPk}/` + 'follow/' // follow
 
   },
   community: {
@@ -34,6 +34,7 @@ export default {
     genres: genreId => HOST + MOVIES + 'genre/' + `${genreId}`,  // 장르 정보들, 세부명들의 필요성은 추후 재고
     similar: movieId => HOST + MOVIES + 'similar/' + `${movieId}/`, 
     likeMovie: movieId => HOST + MOVIES + `${movieId}/` + 'like/', // 영화 좋아요
+    search: movieTitle => HOST + MOVIES + 'search/' + `${movieTitle}/`, // 영화 서치
 },
 
 }

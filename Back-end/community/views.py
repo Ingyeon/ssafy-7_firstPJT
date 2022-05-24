@@ -87,7 +87,6 @@ def create_comment(request, review_pk):
         comments = review.comments.all()
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
     else:
         return Response(status.HTTP_400_BAD_REQUEST)
 

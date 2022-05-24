@@ -36,17 +36,21 @@
     <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId} }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
     <!-- <ReviewList/> -->
+    <hr>
+    <h1>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h1>
+    <smiliar-movie-list/>
+
   </div>
 </template>
 
 <script>
-
 // import ReviewList from '@/components/ReviewList.vue'
+import SmiliarMovieList from '@/components/SmiliarMovieList.vue'
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
   name: 'MovieDetailView',
   components: {
+    SmiliarMovieList
     // ReviewList
   },
   data() {
@@ -62,7 +66,7 @@ export default {
       // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
       const fol = this.movie.movie_like
       let flag = false
-        if (fol[0] === this.currentUser.pk) {
+        if (this.currentUser.pk in fol) {
           flag = true
         }
           return flag
@@ -78,7 +82,6 @@ export default {
     this.fetchMovie(this.movieId)
     this.likeMovie(this.movieId)
   }
-
 }
 </script>
 

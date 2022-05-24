@@ -24,8 +24,8 @@
     <b-container fluid is-nav class="d-flex justify-content-end">
     <b-navbar-nav class="d-flex">
       <form class="d-flex">
-        <b-form-input size="sm" class="mr-sm-2 my-2" placeholder="Search"></b-form-input>
-        <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit">Search</b-button>
+        <b-form-input size="sm" class="mr-sm-2 my-2" placeholder="Search" v-model="keyword" @keyup.enter="searchResult(keyword)"></b-form-input>
+        <b-button size="sm" class="my-2 mr-sm-0 mx-2" type="submit" @click="searchResult(keyword)">Search</b-button>
       </form>
           <!-- if 분기- 로그인 여부 -->
           <b-nav-item-dropdown right v-if="!isLoggedIn" class="ml-auto">
@@ -56,12 +56,31 @@ import {mapGetters} from 'vuex'
 
 export default {
   name: 'NavBar',
+  data(){
+    return {
+      keyword: ''
+    }
+  },
   computed: {
     ...mapGetters(['isLoggedIn','currentUser']),
     username(){
       return this.currentUser.username ? this.currentUser.username : 'guest'
     },
   },
+  methods: {
+    searchResult(keyword){
+      if (keyword != ''){
+        this.$router.push({
+          name: "search",
+          params: {
+            movieTitle: this.keyword
+          }
+        })
+      this.keyword = ''
+      }
+      else {alert('검색어를 입력해주세요!')}
+    }
+  }
 }
 </script>
 

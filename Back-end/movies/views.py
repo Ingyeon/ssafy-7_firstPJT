@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import MovieSerializer
 from .models import Movie
-from .component import movie_API,genre_API,get_similar_movie_API
+from .component import movie_API,genre_API,get_similar_movie_API,search_API
 
 # Create your views here.
 
@@ -52,6 +52,13 @@ def similar_movie(request,movie_id):
 @api_view(['GET'])
 def genre_movie(request,genre_id):
     genre_API(genre_id)
+    movie_data = Movie.objects.all()
+    serializer = MovieSerializer(movie_data,many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def search_movie(request,title):
+    search_API(title)
     movie_data = Movie.objects.all()
     serializer = MovieSerializer(movie_data,many=True)
     return Response(serializer.data)
