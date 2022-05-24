@@ -60,38 +60,28 @@ export default {
 
   computed: {
     ...mapGetters(['movie','currentUser']),
+    
     likeCheck(){
       // 제대로 작동 안하는중 (고쳐야함)
       // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
-      const fol = this.movie.movie_like
       let flag = false
-        if (this.currentUser.pk in fol) {
+      const likedlist = this.movie.movie_like
+      for (let i = 0; i < likedlist.length; i++){
+        if (likedlist[i].pk === this.currentUser.pk) {
           flag = true
+          break
         }
+      }
       return flag
     },
 
-    // setMovieId() {
-    //   console.log('setmovieId')
-    //   return this.movie.movie_id
-    // },
-    
-    },
+  },
   methods: {
     ...mapActions([
       'fetchMovie',
       'likeMovie',
     ]),
   },
-  created(){
-    console.log('check')
-    // const mId = this.setMovieId()
-    // console.log(mId)
-    // const mid = this.$route.params.movieId
-    // if (mid === null)
-    // this.fetchMovie(this.$route.params.movieId)
-    // this.likeMovie(this.$route.params.movieId)
-  }
   
 }
 </script>

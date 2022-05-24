@@ -7,7 +7,9 @@
           <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
             <p>title : {{review.title}}</p>
           </router-link>
-          <p>{{review.user.username}}</p>
+          <router-link :to="{name:'profile', params: {username: review.user.username} }"> 
+            <p>작성자 : {{review.user.username}}</p>
+          </router-link>
         </li>
     </ul>
 

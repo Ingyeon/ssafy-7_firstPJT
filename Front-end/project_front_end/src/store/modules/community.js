@@ -90,7 +90,9 @@ export default {
           commit('SET_REVIEW', res.data)
           router.push({
             name: 'review',
-            params: { reviewPk: getters.review.pk }
+            params: { 
+              reviewPk: getters.review.pk 
+            }
           })
         })
     },
