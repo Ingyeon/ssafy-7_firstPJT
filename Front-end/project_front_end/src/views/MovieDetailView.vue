@@ -21,8 +21,8 @@
               </b-card-text>
               <b-card-text>
                     좋아요:
-                    <button v-if="likeCheck" @click="likeMovie(movieId)"><font-awesome-icon icon="fa-solid fa-heart" /></button>
-                    <button v-else @click="likeMovie(movieId)"><font-awesome-icon icon="fa-regular fa-heart" /></button>
+                    <button v-if="likeCheck" @click="likeMovie(movieId)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
+                    <button v-else @click="likeMovie(movieId)"><font-awesome-icon icon="fa-regular fa-heart"/></button>
 
               </b-card-text>
             </b-card-body>
@@ -58,15 +58,14 @@ export default {
   computed: {
     ...mapGetters(['movie','currentUser']),
     likeCheck(){
-      let flag = false
+      // 제대로 작동 안하는중 (고쳐야함)
+      // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
       const fol = this.movie.movie_like
-      for(let i=0 ; i < fol.length; i++ ) {
-        if (fol[i] === this.currentUser.pk) {
+      let flag = false
+        if (fol[0] === this.currentUser.pk) {
           flag = true
-          break
         }
-      }
-      return flag
+          return flag
     },
     },
   methods: {
@@ -84,5 +83,7 @@ export default {
 </script>
 
 <style>
-
+.red {
+  color: red;
+}
 </style>
