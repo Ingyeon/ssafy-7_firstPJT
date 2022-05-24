@@ -55,7 +55,10 @@ def review_create(request, movie_id):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status.HTTP_400_BAD_REQUEST)
 
-
+# # 영화별 리뷰 리스트 가져오기
+# @api_view(['GET'])
+# def movie_review_list(request, movie_id):
+    
 
 # 리뷰 상세 정보 및 수정, 삭제 
 @api_view(['GET','PUT','DELETE'])

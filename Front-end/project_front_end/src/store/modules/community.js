@@ -27,7 +27,7 @@ export default {
   },
 
   actions: {
-    // 리뷰 목록
+    // total 리뷰 목록
     fetchReviews({ commit, getters }) {
       axios({
         url: drf.community.reviews(),
@@ -37,6 +37,8 @@ export default {
         .then(res => commit('SET_REVIEWS', res.data))
         .catch(err => console.error(err.response))
     },
+
+    // 영화별 리뷰 목록
 
     // 단일 리뷰
     fetchReview({ commit, getters }, reviewPk) {
