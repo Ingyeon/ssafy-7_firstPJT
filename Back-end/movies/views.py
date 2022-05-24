@@ -29,7 +29,7 @@ def like_movie(request,movie_id):
     user = request.user
     
     # 영화 좋아요 했다면 좋아요 취소
-    if movie.movie_like.filter(pk=user.pk).exist():
+    if movie.movie_like.filter(pk=user.pk).exists():
         movie.movie_like.remove(user)
         serializer = MovieSerializer(movie)
         return Response(serializer.data)

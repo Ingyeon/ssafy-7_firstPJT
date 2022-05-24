@@ -20,10 +20,10 @@
                 줄거리 : {{ movie.overview }}
               </b-card-text>
               <b-card-text>
-                장르 : {{ movie.genres }}
-              </b-card-text>
-              <b-card-text>
-                좋아요 /찜 버튼 => 로그인 정보 필요함
+                    좋아요:
+                    <button v-if="likeCheck" @click="likeMovie(movieId)"><font-awesome-icon icon="fa-solid fa-heart" /></button>
+                    <button v-else @click="likeMovie(movieId)"><font-awesome-icon icon="fa-regular fa-heart" /></button>
+
               </b-card-text>
             </b-card-body>
           </b-col>
@@ -56,17 +56,29 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['movie']),
-  },
+    ...mapGetters(['movie','currentUser']),
+    likeCheck(){
+      let flag = false
+      const fol = this.movie.movie_like
+      for(let i=0 ; i < fol.length; i++ ) {
+        if (fol[i] === this.currentUser.pk) {
+          flag = true
+          break
+        }
+      }
+      return flag
+    },
+    },
   methods: {
     ...mapActions([
       'fetchMovie',
+      'likeMovie',
     ])
   },
   created(){
     this.fetchMovie(this.movieId)
+    this.likeMovie(this.movieId)
   }
-
 
 }
 </script>
