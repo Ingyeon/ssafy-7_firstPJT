@@ -4,7 +4,7 @@
     <MovieCard v-for="movie in similar" :movie="movie" :key="movie.movieId" class='mx-3 row row-col-4'/>
     </b-card-group>
   </div>
-</template>
+</template>`1`
 
 <script>
   import MovieCard from '@/components/MovieCard.vue'

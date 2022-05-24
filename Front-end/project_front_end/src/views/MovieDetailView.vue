@@ -1,8 +1,7 @@
 <template>
   <div>
     <div>
-      <h3> movie detail</h3>
-      <!-- {{ setMovieId }} -->
+      <h3 class="my-4"> 영화 세부 정보</h3>
       <b-card no-body class="overflow-hidden mx-auto" style="max-width: 540px;">
         <b-row no-gutters>
           <b-col md="6">
@@ -15,7 +14,7 @@
                 개봉일 : {{ movie.release_date }}
               </b-card-text>
               <b-card-text>
-                관람객 수 : {{ movie.popularity }}
+                트렌드 점수 : {{ movie.popularity }}
               </b-card-text>
               <b-card-text>
                 줄거리 : {{ movie.overview }}
