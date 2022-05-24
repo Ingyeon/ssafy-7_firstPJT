@@ -56,8 +56,8 @@ export default {
     },
 
     // 리뷰 생성
-    createReview({ commit, getters },review) {
-      
+    createReview({ commit, getters },nreview) {
+      const review = { nreview }
       axios({
         url: drf.community.reviews(),
         method: 'post',
