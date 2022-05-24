@@ -2,7 +2,8 @@
     <form @submit.prevent="onSubmit">
       <div>ReviewForm</div>
       <div>
-        받아온 movieid 정보: {{ $route.params.movieId }}
+        getter : {{movie.movie_id}}<br>
+        ?? : {{this.$route.params.movie_id}}
       </div>
       <div>
         <label for="title">title: </label>
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'ReviewForm',
@@ -31,12 +32,18 @@ export default {
     review: Object,
     action: String,
   },
+  
+  computed: {
+    ...mapGetters(['movie']),
+  },
 
   data() {
     return {
       newReview: {
         title: this.review.title,
         content: this.review.content,
+        // movie: this.$route.params.movie_id,
+        // movietmp: this.$stmovie.movieId,
         // rank: this.review.rank,
       }
     }
@@ -46,9 +53,11 @@ export default {
     ...mapActions(['createReview','updateReview']),
     onSubmit() {
       if (this.action === 'create') {
-        console.log(this.$route.params.movieId)
-        console.log(this.newReview)
-        this.createReview({ movieId: this.$route.params.movieId, newReview: this.newReview})
+        const payload = {
+          movie: this.movie.movie_id,
+          ...this.newReview,
+        }
+        this.createReview(payload)
       } else if (this.action === 'update') {
         const payload = {
           pk: this.review.pk,
@@ -57,7 +66,7 @@ export default {
         this.updateReview(payload)
       }
     }
-  }
+  },
 
 }
 </script>
