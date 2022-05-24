@@ -33,7 +33,7 @@
 
     <!-- review -->
     <!-- <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link> -->
-    <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId} }"> 새 리뷰 작성 </router-link>
+    <router-link :to="{ name: 'reviewCreate'/* , params:{ movieId : movieId }*/ }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
     <!-- <ReviewList/> -->
     <hr>

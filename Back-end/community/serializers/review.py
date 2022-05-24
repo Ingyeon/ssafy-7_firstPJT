@@ -18,13 +18,11 @@ class ReviewSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)
     like_users = UserSerializer(read_only=True, many=True)
-    
 
     class Meta:
         model = Review
         fields = ('pk', 'user', 'title', 'content', 'comments', 'like_users', 'movie')
         # review 작동 하기 위해 rank와 movie 필드 제외함
-        read_only_fields = ('movie',)
 
 
 # 글 목록 불러오는 serializer

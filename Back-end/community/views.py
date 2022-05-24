@@ -42,16 +42,11 @@ def review_list(request):
 
 # 리뷰 생성
 @api_view(['POST'])
-def review_create(request, movie_id):
-    user = request.user
-    movie = get_object_or_404(Movie, pk= movie_id)
-    # print(request.data)
+def review_create(request):
     serializer = ReviewSerializer(data=request.data)
-    print('serializer')
-    print(serializer)
     if serializer.is_valid(raise_exception=True):
         print('check')
-        serializer.save(user=user, movie = movie)
+        serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status.HTTP_400_BAD_REQUEST)
 
