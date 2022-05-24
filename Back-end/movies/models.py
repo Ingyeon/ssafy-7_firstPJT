@@ -12,3 +12,4 @@ class Movie(models.Model):
     movie_id = models.IntegerField(primary_key=True)
     genre_id = models.IntegerField()
     movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie')
+
