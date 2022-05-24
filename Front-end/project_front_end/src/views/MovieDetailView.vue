@@ -2,7 +2,7 @@
   <div>
     <div>
       <h3> movie detail</h3>
-      <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+      <b-card no-body class="overflow-hidden mx-auto" style="max-width: 540px;">
         <b-row no-gutters>
           <b-col md="6">
             <b-card-img :src= "`https://image.tmdb.org/t/p/w300${movie.poster_path}`" alt="Image" class="rounded-0"></b-card-img>
@@ -37,7 +37,7 @@
     <!-- <ReviewList :reviews="review.movie_review"/> -->
     <!-- <ReviewList/> -->
     <hr>
-    <h1>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h1>
+    <h2 class='mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white'>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h2>
     <smiliar-movie-list/>
 
   </div>
