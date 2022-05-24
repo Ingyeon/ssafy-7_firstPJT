@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>Community</h1>
-    <router-link :to="{ name: 'reviewCreate' }">리뷰 작성</router-link>
+    <!-- movieid 랑 매핑 안됨 -->
+    <!-- <router-link :to="{ name: 'reviewCreate' }">리뷰 작성</router-link> -->
     <hr>
     <ul>
       <li v-for="review in reviews" :key="review.pk">

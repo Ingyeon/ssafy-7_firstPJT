@@ -23,6 +23,7 @@ export default {
   community: {
     reviews: () => HOST + COMMUNITY,   // 전체 리뷰 목록
     review: reviewPk => HOST + COMMUNITY + `${reviewPk}/`,   // 리뷰글 디테일
+    createReview: movieId => HOST + COMMUNITY + `${movieId}/` + 'create/', // 리뷰 생성
     likeReview: reviewPk => HOST + COMMUNITY + `${reviewPk}/` + 'like/',  // 리뷰 좋아요
     comments: reviewPk => HOST + COMMUNITY + `${reviewPk}/` + COMMENTS, // 댓글 전체 목록
     comment: (reviewPk, commentPk) => HOST + COMMUNITY + `${reviewPk}/` + COMMENTS + `${commentPk}/`, // 단일 댓글

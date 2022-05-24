@@ -38,7 +38,6 @@ export default {
         title: this.review.title,
         content: this.review.content,
         // rank: this.review.rank,
-        movie_id: this.$route.params.movieId
       }
     }
   },
@@ -47,8 +46,9 @@ export default {
     ...mapActions(['createReview','updateReview']),
     onSubmit() {
       if (this.action === 'create') {
+        console.log(this.$route.params.movieId)
         console.log(this.newReview)
-        this.createReview(this.newReview)
+        this.createReview({ movieId: this.$route.params.movieId, newReview: this.newReview})
       } else if (this.action === 'update') {
         const payload = {
           pk: this.review.pk,
