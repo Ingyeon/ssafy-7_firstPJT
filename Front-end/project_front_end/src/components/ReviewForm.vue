@@ -2,7 +2,7 @@
     <form @submit.prevent="onSubmit">
       <div>ReviewForm</div>
       <div>
-        <!-- 받아온 movieid 정보: {{ $route.params.movieId }} -->
+        받아온 movieid 정보: {{ $route.params.movieId }}
       </div>
       <div>
         <label for="title">title: </label>
@@ -38,6 +38,7 @@ export default {
         title: this.review.title,
         content: this.review.content,
         // rank: this.review.rank,
+        movie_id: this.$route.params.movieId
       }
     }
   },
@@ -46,6 +47,7 @@ export default {
     ...mapActions(['createReview','updateReview']),
     onSubmit() {
       if (this.action === 'create') {
+        console.log(this.newReview)
         this.createReview(this.newReview)
       } else if (this.action === 'update') {
         const payload = {
