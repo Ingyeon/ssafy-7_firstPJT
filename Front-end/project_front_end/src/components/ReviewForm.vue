@@ -3,7 +3,6 @@
       <div>ReviewForm</div>
       <div>
         getter : {{movie.movie_id}}<br>
-        ?? : {{this.$route.params.movie_id}}
       </div>
       <div>
         <label for="title">title: </label>
