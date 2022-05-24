@@ -44,8 +44,16 @@ export default {
     ...mapGetters(['profile','currentUser']),
     // 자바스크립트 어케고치기
     checkList() {
-      console.log(this.profile.followers.some(item => item === this.currentUser.pk))
-      return this.currentUser.pk in this.profile.followers? true : false
+      let flag = false
+      const fol = this.profile.followers
+      for(let i=0 ; i < fol.length; i++ ) {
+        if (fol[i].pk === this.currentUser.pk) {
+          flag = true
+          break
+        }
+      }
+
+      return flag
     },
     followerCount() {
       return this.profile.followers?.length
