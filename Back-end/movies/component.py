@@ -4,32 +4,33 @@ from .models import Movie
 
 
 # 인기순 영화 정보 저장
-def movie_API():
-    url = 'https://api.themoviedb.org/3'
-    path = '/movie/now_playing'
-    params = {
-        'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
-        'language': 'ko',
-        'region': 'KR',
-    }
-    movies = requests.get(url + path+'?',params=params).json()
-    
-    # 이 부분이 json 데이터를 장고의 데이터 형식으로 파싱시키기 위함입니다.
-    # instance 내부의 변수명은 model의 필드명이니 이 부분은 맞게 넣으시면 됩니다.
-    
+def movie_API(page):
     Movie.objects.all().delete()
-    for movie in movies['results']:
-        instance = Movie.objects.create(
-        title = movie['title'],
-        release_date = movie['release_date'],
-        popularity = movie['popularity'],
-        overview = movie['overview'],
-        poster_path = movie['poster_path'],
-        movie_id = movie['id'],
-        genre_id = movie['genre_ids'][0],
+    for i in range(1,page+1):
+        url = 'https://api.themoviedb.org/3'
+        path = '/movie/now_playing'
+        params = {
+            'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
+            'language': 'ko',
+            'region': 'KR',
+            'page': i,
+        }
+        movies = requests.get(url + path+'?',params=params).json()
         
-        )
-        instance.save()
+        # 이 부분이 json 데이터를 장고의 데이터 형식으로 파싱시키기 위함입니다.
+        # instance 내부의 변수명은 model의 필드명이니 이 부분은 맞게 넣으시면 됩니다.
+        
+        for movie in movies['results']:
+            instance = Movie.objects.create(
+            title = movie['title'],
+            release_date = movie['release_date'],
+            popularity = movie['popularity'],
+            overview = movie['overview'],
+            poster_path = movie['poster_path'],
+            movie_id = movie['id'],
+            genre_id = movie['genre_ids'][0],
+            )
+            instance.save()
     return movies
 
 # 비슷한 영화 정보 저장
@@ -60,29 +61,31 @@ def get_similar_movie_API(movie_id):
 
 
 # 장르별 영화 API
-def genre_API(genre_id):
-    url = 'https://api.themoviedb.org/3'
-    path = '/discover/movie'
-    params = {
-        'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
-        'language': 'ko',
-        'region': 'KR',
-        'with_genres': genre_id,
-    }
-    movies = requests.get(url + path+'?',params=params).json()
-    
+def genre_API(genre_id,page):
     Movie.objects.all().delete()
-    for movie in movies['results']:
-        instance = Movie.objects.create(
-        title = movie['title'],
-        release_date = movie['release_date'],
-        popularity = movie['popularity'],
-        overview = movie['overview'],
-        poster_path = movie['poster_path'],
-        movie_id = movie['id'],
-        genre_id = movie['genre_ids'][0],
-        )
-        instance.save()
+    for i in range(1,page+1):
+        url = 'https://api.themoviedb.org/3'
+        path = '/discover/movie'
+        params = {
+            'api_key': '143a27aa8ba75a3d662d1f05a4e1b4f9',
+            'language': 'ko',
+            'region': 'KR',
+            'with_genres': genre_id,
+            'page' : i
+        }
+        movies = requests.get(url + path+'?',params=params).json()
+        
+        for movie in movies['results']:
+            instance = Movie.objects.create(
+            title = movie['title'],
+            release_date = movie['release_date'],
+            popularity = movie['popularity'],
+            overview = movie['overview'],
+            poster_path = movie['poster_path'],
+            movie_id = movie['id'],
+            genre_id = movie['genre_ids'][0],
+            )
+            instance.save()
     return movies
 
 # 영화 검색 기능

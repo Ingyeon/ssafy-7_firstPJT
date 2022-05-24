@@ -2,7 +2,6 @@
   <div>
     <!-- user 정보 -->
     <h1>{{profile.username}} 님의 프로필</h1>
-    <h2> 로그인한 유저 정보 : {{currentUser.username}}</h2>
 
     <div v-if="profile.pk !== currentUser.pk">
       <!-- 팔로우 버튼 -->
@@ -10,8 +9,8 @@
       
       <button v-if="checkList" @click="follow(profile.pk)"> 언팔로우 </button>
       <button v-else @click="follow(profile.pk)"> 팔로우 </button>
-
     </div>
+    <hr>
 
 
     <div>
@@ -19,6 +18,16 @@
       팔로워 : {{ followerCount }} <br>
       팔로우 : {{ followingCount }}
     </div>
+    <hr>
+    <!-- 좋아요한 영화 목록 -->
+    <div>
+      <h2>{{profile.username}} 님이 좋아요한 영화</h2>
+      <ul>
+        <li v-for="liked in movie.movie" :key="liked.pk">
+        </li>
+      </ul>
+    </div>
+
     
     <!-- 작성한 리뷰 목록-->
     <h2>{{profile.username}} 님이 작성한 리뷰</h2>
@@ -37,11 +46,10 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
   name: 'ProfileView',
   computed: {
-    ...mapGetters(['profile','currentUser']),
+    ...mapGetters(['profile','currentUser','movie']),
     // 자바스크립트 어케고치기
     checkList() {
       let flag = false

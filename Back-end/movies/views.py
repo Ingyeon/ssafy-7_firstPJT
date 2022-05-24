@@ -11,7 +11,7 @@ from .component import movie_API,genre_API,get_similar_movie_API,search_API
 
 @api_view(['GET'])
 def movie_list(request):
-    movie_API()
+    movie_API(2)
     movie_data = Movie.objects.all()
     serializer = MovieSerializer(movie_data,many=True)
     return Response(serializer.data)
@@ -51,7 +51,7 @@ def similar_movie(request,movie_id):
 # 장르별 영화
 @api_view(['GET'])
 def genre_movie(request,genre_id):
-    genre_API(genre_id)
+    genre_API(genre_id,2)
     movie_data = Movie.objects.all()
     serializer = MovieSerializer(movie_data,many=True)
     return Response(serializer.data)

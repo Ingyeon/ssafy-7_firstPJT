@@ -13,7 +13,7 @@ export default {
     },
     getters: {
         movies: state => state.movies,
-        movie: state => state.movie,
+        movie: state => state.movie, // 좋아요 데이터
         genre: state => state.genre,
         similar: state => state.similar,
         search: state => state.search,
@@ -24,7 +24,7 @@ export default {
     
     mutations: {
         SET_MOVIES: (state,movies) => state.movies = movies,
-        SET_MOVIE: (state, movie) => state.movie = movie,
+        SET_MOVIE: (state, movie) => state.movie = movie, // 좋아요
         SET_GENRE: (state,genre) => state.genre = genre,
         SET_SIMILAR: (state,similar) => state.similar = similar,
         SET_SEARCH: (state,search) => state.search = search,

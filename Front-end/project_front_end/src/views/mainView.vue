@@ -22,9 +22,6 @@
 
       <b-carousel-slide img-src="https://www.lunchbox-productions.com/wp-content/uploads/2021/10/Movies-Like-Miss-Congeniality-1024x480.jpg"></b-carousel-slide>
 
-    <!-- 슬라이드 사이즈 조정시 다음과 같이 가능 -->
-    <!-- 영화 포스터를 케러셀로 넣을 시 안이쁘고 사이즈가 너무 큽니다. 적당한 다른 이미지를
-    구하는게 좋아보여요 -->
       <b-carousel-slide>
         <template #img>
           <img
@@ -40,7 +37,7 @@
 
 
 <!-- 케러셀 아래에 보여줄 영화 카드들 -->
-  <h1>현재 상영중인 영화들</h1>
+  <h1 class=" mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white">현재 상영중인 영화들</h1>
     <MovieList/>
   </div>
 </template>

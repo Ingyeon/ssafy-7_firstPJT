@@ -44,7 +44,6 @@
           <b-dropdown-item :to="{ name: 'logout' }">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
 
-
       </b-navbar-nav>
       </b-container>
   </b-navbar>

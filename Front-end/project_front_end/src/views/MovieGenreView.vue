@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>선택한 장르의 영화 목록입니다.</p>
+    <p class="mt-2">선택한 장르의 영화 목록입니다.</p>
   <GenreMovieList/>
   </div>
 

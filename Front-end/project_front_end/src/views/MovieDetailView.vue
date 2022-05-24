@@ -33,9 +33,9 @@
 
     <!-- review -->
     <!-- <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link> -->
-    <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId } }"> 새 리뷰 작성 </router-link>
+    <router-link :to="{ name: 'reviewCreate' , params:{ movieId : movieId} }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
-    <ReviewList :movieId="movieId"/>
+    <!-- <ReviewList/> -->
     <hr>
     <h1>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h1>
     <smiliar-movie-list/>
@@ -44,14 +44,14 @@
 </template>
 
 <script>
-import ReviewList from '@/components/ReviewList.vue'
+// import ReviewList from '@/components/ReviewList.vue'
 import SmiliarMovieList from '@/components/SmiliarMovieList.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'MovieDetailView',
   components: {
-    SmiliarMovieList,
-    ReviewList
+    SmiliarMovieList
+    // ReviewList
   },
   data() {
     return {

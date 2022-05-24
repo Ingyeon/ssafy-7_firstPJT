@@ -1,5 +1,6 @@
 <template>
   <div>
+      <h1>{{search.length}}편의 영화가 검색되었습니다.</h1>
     <b-card-group class="d-flex">
     <MovieCard v-for="movie in search" :movie="movie" :key="movie.movieId" class='col-3'/>
     </b-card-group>

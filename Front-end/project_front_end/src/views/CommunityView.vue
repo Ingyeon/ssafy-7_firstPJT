@@ -21,15 +21,19 @@
 
       </li>
     </ul>
-   
+    <board :key="reviews.pk" />
   </div>
 </template>
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import board from '@/components/Board.vue'
 
   export default {
     name: 'CommunityView',
+    components: {
+      board
+    },
     computed: {
       ...mapGetters(['reviews'])
     },
