@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-link :to="{ name: 'movieDeatil', params: { movieId: movie.movie_id } }">
+    <router-link 
+    @click.native="setLocalMovie(movie.movie_id)"
+     :to="{ name: 'MovieDetail', params: { movieId: movie.movie_id } }">
       <b-card
         img-alt="Image"
         img-top
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-  // import { mapActions, mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'MovieCard',
@@ -25,6 +27,19 @@
     props: {
       movie: Object
     },
+    
+    methods: {
+      ...mapActions(['fetchMovie','likeMovie']),
+      setLocalMovie(movieid) {
+        this.fetchMovie(movieid)
+      }
+    }
+
+    // computed: {
+    //   ...mapGetters({
+
+    //   })
+    // }
     // data() {
     //   return {
     //     movieinfo: {

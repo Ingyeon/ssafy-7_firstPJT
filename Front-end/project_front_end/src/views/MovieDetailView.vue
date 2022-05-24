@@ -2,6 +2,7 @@
   <div>
     <div>
       <h3> movie detail</h3>
+      <!-- {{ setMovieId }} -->
       <b-card no-body class="overflow-hidden mx-auto" style="max-width: 540px;">
         <b-row no-gutters>
           <b-col md="6">
@@ -21,8 +22,8 @@
               </b-card-text>
               <b-card-text>
                     좋아요:
-                    <button v-if="likeCheck" @click="likeMovie(movieId)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
-                    <button v-else @click="likeMovie(movieId)"><font-awesome-icon icon="fa-regular fa-heart"/></button>
+                    <button v-if="likeCheck" @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
+                    <button v-else @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-regular fa-heart"/></button>
 
               </b-card-text>
             </b-card-body>
@@ -32,8 +33,7 @@
     </div>
 
     <!-- review -->
-    <!-- <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link> -->
-    <router-link :to="{ name: 'reviewCreate'/* , params:{ movieId : movieId }*/ }"> 새 리뷰 작성 </router-link>
+    <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
     <!-- <ReviewList/> -->
     <hr>
@@ -69,19 +69,31 @@ export default {
         if (this.currentUser.pk in fol) {
           flag = true
         }
-          return flag
+      return flag
     },
+
+    // setMovieId() {
+    //   console.log('setmovieId')
+    //   return this.movie.movie_id
+    // },
+    
     },
   methods: {
     ...mapActions([
       'fetchMovie',
       'likeMovie',
-    ])
+    ]),
   },
   created(){
-    this.fetchMovie(this.movieId)
-    this.likeMovie(this.movieId)
+    console.log('check')
+    // const mId = this.setMovieId()
+    // console.log(mId)
+    // const mid = this.$route.params.movieId
+    // if (mid === null)
+    // this.fetchMovie(this.$route.params.movieId)
+    // this.likeMovie(this.$route.params.movieId)
   }
+  
 }
 </script>
 

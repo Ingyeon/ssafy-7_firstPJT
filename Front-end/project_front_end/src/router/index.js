@@ -67,7 +67,7 @@ const routes = [
   },
   {
     path: '/movies/detail/:movieId',  
-    name: 'movieDeatil',
+    name: 'MovieDetail',
     component: MovieDetailView
   },
   {
