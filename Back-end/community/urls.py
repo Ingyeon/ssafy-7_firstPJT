@@ -5,7 +5,8 @@ app_name = 'community'
 
 urlpatterns = [
     # review용 api
-    path('', views.review_list_or_create),
+    path('', views.review_list),
+    path('<int:movie_id>/create/', views.review_create),
     path('<int:review_pk>/',views.review_detail_or_update_or_delete),
     path('<int:review_pk>/like/',views.like_review),
     

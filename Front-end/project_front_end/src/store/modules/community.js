@@ -56,10 +56,11 @@ export default {
     },
 
     // 리뷰 생성
-    createReview({ commit, getters },nreview) {
-      const review = { nreview }
+    createReview({ commit, getters }, {movieId, newReview}) {
+      const review = newReview
+      console.log(review)
       axios({
-        url: drf.community.reviews(),
+        url: drf.community.createReview(movieId),
         method: 'post',
         data: review,
         headers: getters.authHeader,

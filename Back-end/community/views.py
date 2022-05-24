@@ -5,31 +5,56 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Review,Comment
+from .models import Review,Comment,Movie
 from .serializers.comment import CommentSerializer
 from .serializers.review import ReviewListSerializer,ReviewSerializer
 
 # Response(status.HTTP_400_BAD_REQUEST)는 api 정상작동 여부 확인 위해 사용
 
-# 리뷰 목록 확인 및 생성용 api
-@api_view(['GET','POST'])
-def review_list_or_create(request):
-    if request.method == 'GET':
-        reviews = Review.objects.annotate(
-            comment_count = Count('comments', distinct=True),
-            like_count = Count('like_users', distinct=True)).order_by('-pk')
+# # 리뷰 목록 확인 및 생성용 api
+# @api_view(['GET','POST'])
+# def review_list_or_create(request):
+#     if request.method == 'GET':
+#         reviews = Review.objects.annotate(
+#             comment_count = Count('comments', distinct=True),
+#             like_count = Count('like_users', distinct=True)).order_by('-pk')
         
-        serializer = ReviewListSerializer(reviews,many=True)
-        return Response(serializer.data)
+#         serializer = ReviewListSerializer(reviews,many=True)
+#         return Response(serializer.data)
     
-    elif request.method == 'POST':
-        serializer = ReviewSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+#     elif request.method == 'POST':
+#         serializer = ReviewSerializer(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             serializer.save(user=request.user)
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-    # get과 post 제외한 요청은 400 에러 응답    
+#     # get과 post 제외한 요청은 400 에러 응답    
+#     return Response(status.HTTP_400_BAD_REQUEST)
+
+# 리뷰리스트 가져오기
+@api_view(['GET'])
+def review_list(request):
+    reviews = Review.objects.annotate(
+        comment_count = Count('comments', distinct=True),
+        like_count = Count('like_users', distinct=True)).order_by('-pk')
+    serializer = ReviewListSerializer(reviews,many=True)
+    return Response(serializer.data)
+
+# 리뷰 생성
+@api_view(['POST'])
+def review_create(request, movie_id):
+    user = request.user
+    movie = get_object_or_404(Movie, pk= movie_id)
+    # print(request.data)
+    serializer = ReviewSerializer(data=request.data)
+    print('serializer')
+    print(serializer)
+    if serializer.is_valid(raise_exception=True):
+        print('check')
+        serializer.save(user=user, movie = movie)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status.HTTP_400_BAD_REQUEST)
+
 
 
 # 리뷰 상세 정보 및 수정, 삭제 
