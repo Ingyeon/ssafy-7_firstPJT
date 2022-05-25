@@ -1,19 +1,19 @@
 <template>
   <div>
     <b-card-group class="d-flex justify-content-center">
-    <MovieCard v-for="movie in similar" :movie="movie" :key="movie.movieId" class='mx-3 row row-col-4'/>
+    <similarCard v-for="similardetail in similar" :similardetail="similardetail" :key="similardetail.movieId" class='mx-3 row row-col-4'/>
     </b-card-group>
   </div>
 </template>`1`
 
 <script>
-  import MovieCard from '@/components/MovieCard.vue'
+  import similarCard from '@/components/similarCard.vue'
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'SimiliarMovieListView',
     components: {
-      MovieCard,
+      similarCard,
     },
     data() {
     return {

@@ -19,6 +19,7 @@ import ReviewEditView from '@/views/ReviewEditView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
 import MainView from '@/views/MainView.vue'
 import SearchView from '@/views/SearchView.vue'
+import SimilarDetailView from '@/views/SimilarDetailView.vue'
 
 Vue.use(VueRouter)
 
@@ -71,9 +72,14 @@ const routes = [
     component: MovieDetailView
   },
   {
+    path: 'movies/similardetail/:movieId',
+    name: 'SimilarDetail',
+    component: SimilarDetailView
+  },
+  {
     path: '/movies/:genreId',  
     name: 'genreMovieList',
-    component: MovieGenreView,
+    component: MovieGenreView
   },
   {
     path: '/community/create',  

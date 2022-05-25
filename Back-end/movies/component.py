@@ -1,6 +1,6 @@
 from xml.etree.ElementInclude import include
 import requests
-from .models import Movie
+from .models import Movie, Similar
 
 
 # 인기순 영화 정보 저장
@@ -44,9 +44,9 @@ def get_similar_movie_API(movie_id):
     }
     movies = requests.get(url + path+'?',params=params).json()
     
-    Movie.objects.all().delete()
+    Similar.objects.all().delete()
     for movie in movies['results']:
-        instance = Movie.objects.create(
+        instance = Similar.objects.create(
         title = movie['title'],
         release_date = movie['release_date'],
         popularity = movie['popularity'],

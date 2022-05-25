@@ -10,13 +10,15 @@ export default {
         genre: [],
         similar: [],
         search: [],
+        similardetail: [],
     },
     getters: {
         movies: state => state.movies,
-        movie: state => state.movie, // 좋아요 데이터
+        movie: state => state.movie, 
         genre: state => state.genre,
         similar: state => state.similar,
         search: state => state.search,
+        similardetail: state => state.similardetail
         // isLoggedIn: state => !!state.token,
         // currentUser: state => state.currentUser,
         // authHeader: state => ({ Authorization: `Token ${state.token}`})
@@ -24,10 +26,11 @@ export default {
     
     mutations: {
         SET_MOVIES: (state,movies) => state.movies = movies,
-        SET_MOVIE: (state, movie) => state.movie = movie, // 좋아요
+        SET_MOVIE: (state, movie) => state.movie = movie,
         SET_GENRE: (state,genre) => state.genre = genre,
         SET_SIMILAR: (state,similar) => state.similar = similar,
         SET_SEARCH: (state,search) => state.search = search,
+        SET_SIMILARDETAIL: (state,similardetail) => state.similardetail = similardetail,
         // SET_CURRENT_USER: (state, user) => state.currentUser = user,
     },
   
@@ -68,6 +71,20 @@ export default {
                 headers: getters.authHeader, 
             })
             .then(res => commit('SET_MOVIE', res.data))
+            .catch(err => {
+                console.error(err.response)
+                if (err.response.status === 404){
+                    router.push({ name: 'NotFound404' })
+                }
+            })
+        },
+        fetchSimilarDetail({commit , getters},movieId){
+            axios({
+                url: drf.movies.similar_detail(movieId),
+                method: 'get',
+                headers: getters.authHeader, 
+            })
+            .then(res => commit('SET_SIMILARDETAIL', res.data))
             .catch(err => {
                 console.error(err.response)
                 if (err.response.status === 404){
