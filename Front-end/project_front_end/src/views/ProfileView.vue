@@ -23,8 +23,10 @@
     <div>
       <h2>{{profile.username}} 님이 좋아요한 영화</h2>
       <ul>
-        <li v-for="liked in movie.movie" :key="liked.pk">
+        <li>
+          <p>{{like.title}}</p>
         </li>
+        
       </ul>
     </div>
 
@@ -49,7 +51,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'ProfileView',
   computed: {
-    ...mapGetters(['profile','currentUser','movie']),
+    ...mapGetters(['profile','currentUser','like']),
     // 자바스크립트 어케고치기
     checkList() {
       let flag = false
@@ -73,6 +75,7 @@ export default {
     ...mapActions(['fetchProfile', 'fetchCurrentUser','follow']),
   },
   created(){
+    console.log(this.like)
     const payload = { username: this.$route.params.username }
     this.fetchProfile(payload)
   },

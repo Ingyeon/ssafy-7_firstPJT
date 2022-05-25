@@ -21,8 +21,11 @@
               </b-card-text>
               <b-card-text>
                     좋아요:
-                    <button v-if="likeCheck" @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
-                    <button v-else @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-regular fa-heart"/></button>
+                    <button @click="likeCheck()">
+                    <font-awesome-icon v-if="flag==true" icon="fa-regular fa-heart"/>
+                    <font-awesome-icon v-else icon="fa-solid fa-heart" class=red />
+                    </button>
+
               </b-card-text>
             </b-card-body>
           </b-col>
@@ -53,35 +56,29 @@ export default {
   },
   data() {
     return {
-      movieId: this.$route.params.movieId
+      movieId: this.$route.params.movieId,
+      flag: false
     }
   },
 
   computed: {
-    ...mapGetters(['movie','currentUser']),
-    
-    likeCheck(){
-      // 제대로 작동 안하는중 (고쳐야함)
-      // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
-      let flag = false
-      const likedlist = this.movie.movie_like
-      for (let i = 0; i < likedlist.length; i++){
-        if (likedlist[i].pk === this.currentUser.pk) {
-          flag = true
-          break
-        }
-      }
-      return flag
-    },
-
+    ...mapGetters(['movie','currentUser','like']),
   },
   methods: {
     ...mapActions([
       'fetchMovie',
       'likeMovie',
     ]),
+      likeCheck(){
+      const likedlist = this.like.movie_like
+        if (likedlist.length === 1) {
+          this.likeMovie(this.movieId)
+          return this.flag = true
+        }
+      else if (this.likeMovie(this.movieId))
+      {return this.flag=false}
+    },
   },
-  
 }
 </script>
 

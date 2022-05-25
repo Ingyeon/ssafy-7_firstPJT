@@ -11,6 +11,7 @@ export default {
         similar: [],
         search: [],
         similardetail: [],
+        like: [],
     },
     getters: {
         movies: state => state.movies,
@@ -18,7 +19,8 @@ export default {
         genre: state => state.genre,
         similar: state => state.similar,
         search: state => state.search,
-        similardetail: state => state.similardetail
+        similardetail: state => state.similardetailm,
+        like: state => state.like,
         // isLoggedIn: state => !!state.token,
         // currentUser: state => state.currentUser,
         // authHeader: state => ({ Authorization: `Token ${state.token}`})
@@ -31,6 +33,7 @@ export default {
         SET_SIMILAR: (state,similar) => state.similar = similar,
         SET_SEARCH: (state,search) => state.search = search,
         SET_SIMILARDETAIL: (state,similardetail) => state.similardetail = similardetail,
+        SET_LIKE: (state,like) => state.like = like
         // SET_CURRENT_USER: (state, user) => state.currentUser = user,
     },
   
@@ -119,7 +122,7 @@ export default {
                 method: 'post',
                 headers: getters.authHeader,
             })
-            .then(res => commit('SET_MOVIE', res.data))
+            .then(res => commit('SET_LIKE', res.data))
             .catch(err => console.error(err.response))
         },
         searchMovie({commit,getters},movieTitle){
