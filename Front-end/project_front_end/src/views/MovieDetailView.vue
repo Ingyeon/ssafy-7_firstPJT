@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       movieId: this.$route.params.movieId,
-      flag: false
+      flag: true
     }
   },
 
