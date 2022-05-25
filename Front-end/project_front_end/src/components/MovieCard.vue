@@ -34,22 +34,6 @@
         this.fetchMovie(movieid)
       }
     }
-
-    // computed: {
-    //   ...mapGetters({
-
-    //   })
-    // }
-    // data() {
-    //   return {
-    //     movieinfo: {
-    //       movieId: this.movie.movie_id,
-    //       title: this.movie.title,
-    //       posterPath: this.movie.poster_path,
-    //     }
-    //   }
-    // },
-    
   }
 </script>
 
