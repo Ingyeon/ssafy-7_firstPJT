@@ -34,7 +34,7 @@
     <!-- review -->
     <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
-    <ReviewList :movieId="movie.movie_id"/>
+    <!-- <ReviewList :movieId="movie.movie_id"/> -->
     <hr>
     <h2 class='mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white'>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h2>
     <smiliar-movie-list/>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import ReviewList from '@/components/ReviewList.vue'
+// import ReviewList from '@/components/ReviewList.vue'
 import SmiliarMovieList from '@/components/SmiliarMovieList.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -81,18 +81,6 @@ export default {
       'likeMovie',
     ]),
   },
-<<<<<<< HEAD
-  created(){
-    console.log('check')
-    // const mId = this.setMovieId()
-    // console.log(mId)
-    // const mid = this.$route.params.movieId
-    // if (mid === null)
-    this.fetchMovie(this.$route.params.movieId)
-    this.likeMovie(this.$route.params.movieId)
-  }
-=======
->>>>>>> a212f4ddf2bb51ceae4c29725352fece2ab48a3d
   
 }
 </script>
