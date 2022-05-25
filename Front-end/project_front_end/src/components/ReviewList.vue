@@ -3,7 +3,7 @@
     <h2> Reviews </h2>
 
     <ul v-for="review in reviews" :key="review.pk">
-        <li v-if="review.movie == movieId">
+        <li v-if="review.movie === movieId">
           <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
             <p>title : {{review.title}}</p>
           </router-link>

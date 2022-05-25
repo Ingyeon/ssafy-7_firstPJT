@@ -19,6 +19,7 @@ export default {
         pk: null,
         title: '',
         content: '',
+        rank : null,
         movie: null,
       }
     }
