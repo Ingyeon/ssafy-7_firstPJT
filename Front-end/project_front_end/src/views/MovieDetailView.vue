@@ -34,7 +34,7 @@
     <!-- review -->
     <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link>
     <!-- <ReviewList :reviews="review.movie_review"/> -->
-    <!-- <ReviewList/> -->
+    <ReviewList :movieId="movie.movie_id"/>
     <hr>
     <h2 class='mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white'>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h2>
     <smiliar-movie-list/>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-// import ReviewList from '@/components/ReviewList.vue'
+import ReviewList from '@/components/ReviewList.vue'
 import SmiliarMovieList from '@/components/SmiliarMovieList.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -59,29 +59,29 @@ export default {
 
   computed: {
     ...mapGetters(['movie','currentUser']),
+    
     likeCheck(){
       // 제대로 작동 안하는중 (고쳐야함)
       // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
       let flag = false
-      const fol = this.movie.movie_like
-        if (fol[0] === this.currentUser.pk) {
+      const likedlist = this.movie.movie_like
+      for (let i = 0; i < likedlist.length; i++){
+        if (likedlist[i].pk === this.currentUser.pk) {
           flag = true
+          break
         }
+      }
       return flag
     },
 
-    // setMovieId() {
-    //   console.log('setmovieId')
-    //   return this.movie.movie_id
-    // },
-    
-    },
+  },
   methods: {
     ...mapActions([
       'fetchMovie',
       'likeMovie',
     ]),
   },
+<<<<<<< HEAD
   created(){
     console.log('check')
     // const mId = this.setMovieId()
@@ -91,6 +91,8 @@ export default {
     this.fetchMovie(this.$route.params.movieId)
     this.likeMovie(this.$route.params.movieId)
   }
+=======
+>>>>>>> a212f4ddf2bb51ceae4c29725352fece2ab48a3d
   
 }
 </script>

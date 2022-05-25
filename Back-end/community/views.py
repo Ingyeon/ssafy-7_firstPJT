@@ -50,10 +50,6 @@ def review_create(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status.HTTP_400_BAD_REQUEST)
 
-# # 영화별 리뷰 리스트 가져오기
-# @api_view(['GET'])
-# def movie_review_list(request, movie_id):
-    
 
 # 리뷰 상세 정보 및 수정, 삭제 
 @api_view(['GET','PUT','DELETE'])
@@ -64,9 +60,12 @@ def review_detail_or_update_or_delete(request,review_pk):
         serializer = ReviewSerializer(review)
         return Response(serializer.data)
     
+    # 왜 안됨...???
     elif request.method == 'PUT':
+        print(request.data)
         if request.user == review.user:
             serializer = ReviewSerializer(instance=review, data=request.data)
+            print(serializer.instance.title)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
                 return Response(serializer.data)

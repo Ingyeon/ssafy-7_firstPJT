@@ -3,7 +3,6 @@
       <div>ReviewForm</div>
       <div>
         getter : {{movie.movie_id}}<br>
-        ?? : {{this.$route.params.movie_id}}
       </div>
       <div>
         <label for="title">title: </label>
@@ -13,10 +12,10 @@
         <label for="content">content: </label>
         <textarea v-model="newReview.content" type="text" id="content"></textarea>
       </div>
-      <!-- <div>
+      <div>
         <label for="rank">rank: </label>
-        <textarea v-model="newReview.rank" type="text" id="content"></textarea>
-      </div> -->
+        <input v-model="newReview.rank" type="number" min="0" max="10"  id="content"/>
+      </div>
       <div>
         <button>{{ action }}</button>
       </div>
@@ -42,9 +41,7 @@ export default {
       newReview: {
         title: this.review.title,
         content: this.review.content,
-        // movie: this.$route.params.movie_id,
-        // movietmp: this.$stmovie.movieId,
-        // rank: this.review.rank,
+        rank: this.review.rank,
       }
     }
   },

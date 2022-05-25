@@ -21,8 +21,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('pk', 'user', 'title', 'content', 'comments', 'like_users', 'movie')
-        # review 작동 하기 위해 rank와 movie 필드 제외함
+        fields = ('pk', 'user', 'title', 'content', 'comments', 'rank', 'like_users', 'movie')
+        # review 작동 하기 위해 rank필드 제외함
 
 
 # 글 목록 불러오는 serializer
