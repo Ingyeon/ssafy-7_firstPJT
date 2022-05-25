@@ -3,7 +3,7 @@
   <b-navbar type="dark" variant="dark">
     <b-navbar-nav>  
     <b-navbar-brand class="fw-bold">
-      <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten">
+      <img src="@/assets/logo.png" class="d-inline-block align-top" alt="ssafy">
       영화사이트
     </b-navbar-brand>
       <!-- navbar 링크 목록, b-navbar-nav 내부에 값 넣기 -->
