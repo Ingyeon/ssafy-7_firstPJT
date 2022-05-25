@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card-group class="d-flex justify-content-center">
-    <similarCard v-for="similardetail in similar" :similardetail="similardetail" :key="similardetail.movieId" class='mx-3 row row-col-4'/>
+    <similarCard v-for="similardetail in similar" :similardetail="similardetail" :key="similardetail.movieId"  class='mcs mx-2 row row-col-4'/>
     </b-card-group>
   </div>
 </template>`1`
@@ -33,5 +33,8 @@
 </script>
 
 <style>
-
+.mcs a {
+  color: #2c3e50 ;
+  text-decoration: none;
+}
 </style>

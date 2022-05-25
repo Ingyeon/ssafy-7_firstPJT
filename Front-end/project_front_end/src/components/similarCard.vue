@@ -9,10 +9,12 @@
         tag="article"
         style="max-width: 20rem;"
         class="mb-2"
-        
+        id="moviecard"
       >
-      <b-card-img :src= "`https://image.tmdb.org/t/p/w300${similardetail.poster_path}`"/>
-      <b-card-title> {{ similardetail.title }} </b-card-title>
+      <b-card-img :src= "`https://image.tmdb.org/t/p/w300${similardetail.poster_path}`" id="card-img"/>
+      <div id="bcardtitle">
+        <b-card-title class="movietitle text-decoration-none"> {{ similardetail.title }} </b-card-title>
+      </div>
       </b-card>
     </router-link>
   </div>
@@ -36,5 +38,22 @@
 </script>
 
 <style>
+  #card-img {
+    width : 286px;
+    height: 410px;
+  }
+  #bcardtitle{
+    height: 92px;
+  }
 
+  h4.card-title.movietitle {
+    line-height: 92px;
+    vertical-align: middle;
+  }
+
+  #moviecard {
+    height : 518px;
+    width : 318px;
+    padding-bottom: 0px;
+  }
 </style>

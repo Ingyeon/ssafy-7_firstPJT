@@ -1,22 +1,21 @@
 <template>
-  <div>
-    <h1>Login</h1>
+  <div class="mx-auto my-3 p-3 border border-1 rounded" style="max-width:400px;">
 
+    <h2>Login</h2>
     <AccountErrorList v-if="authError"></AccountErrorList>
+    <div style="max-width: 400px;" class="">
+      <b-form @submit.prevent="login(credentials)">
+        <b-form-group id="username" label="Username:" label-for="username" >
+          <b-form-input id="username" v-model="credentials.username" type="text" placeholder="Enter Username" required />
+        </b-form-group>
 
-    <form @submit.prevent="login(credentials)">
-      <div>
-        <label for="username">username: </label>
-        <input v-model="credentials.username" type="text" id="username" required />
-      </div>
+        <b-form-group id="password" label="Password:" label-for="password">
+          <b-form-input id="password" v-model="credentials.password" placeholder="Enter Password" type="password" required />
+        </b-form-group>
 
-      <div>
-        <label for="password">password: </label>
-        <input v-model="credentials.password" type="password" id="password" required />
-      </div>
-
-      <button>Login</button>
-    </form>
+        <b-button type="submit" variant="primary" class="mt-3">Login</b-button>
+      </b-form>
+    </div>
   </div>
 </template>
 
@@ -46,4 +45,8 @@
   }
 </script>
 
-<style></style>
+<style>
+  label {
+    text-align: start;
+  }
+</style>

@@ -1,22 +1,16 @@
 <template>
   <div>
     <!-- user 정보 -->
-    <h1>{{profile.username}} 님의 프로필</h1>
-
+    <h3 class="mt-4 mb-2">{{profile.username}} 님의 프로필</h3>
+    <div style="max-width:400px;" class="mx-auto d-flex justify-content-around">
+      <!-- 팔로워 : {{ profile.followers.all|length }} / 팔로우: {{ profile.followings.all|length }} -->
+      <span> 팔로워 : {{ followerCount }} </span>
+      <span> 팔로우 : {{ followingCount }} </span>
+    </div>
     <div v-if="profile.pk !== currentUser.pk">
       <!-- 팔로우 버튼 -->
-      <!-- v-if="currentUser in profile.followers" v-for랑 v-if 같이쓰지 말라했는데.. -->
-      
       <button v-if="checkList" @click="follow(profile.pk)"> 언팔로우 </button>
       <button v-else @click="follow(profile.pk)"> 팔로우 </button>
-    </div>
-    <hr>
-
-
-    <div>
-      <!-- 팔로워 : {{ profile.followers.all|length }} / 팔로우: {{ profile.followings.all|length }} -->
-      팔로워 : {{ followerCount }} <br>
-      팔로우 : {{ followingCount }}
     </div>
     <hr>
     <!-- 좋아요한 영화 목록 -->
