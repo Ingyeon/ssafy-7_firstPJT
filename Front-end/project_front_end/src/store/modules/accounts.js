@@ -82,7 +82,6 @@ export default {
       axios({
         url: drf.accounts.logout(),
         method: 'post',
-        // data: {},
         headers: getters.authHeader,
       })
         .then(() => {
