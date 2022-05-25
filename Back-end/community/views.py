@@ -44,8 +44,9 @@ def review_list(request):
 @api_view(['POST'])
 def review_create(request):
     serializer = ReviewSerializer(data=request.data)
+    # print(serializer)
     if serializer.is_valid(raise_exception=True):
-        print('check')
+        # print('check')
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(status.HTTP_400_BAD_REQUEST)
@@ -64,8 +65,8 @@ def review_detail_or_update_or_delete(request,review_pk):
     elif request.method == 'PUT':
         print(request.data)
         if request.user == review.user:
-            serializer = ReviewSerializer(instance=review, data=request.data)
-            print(serializer.instance.title)
+            serializer = ReviewSerializer(data=request.data, instance=review)
+            print(serializer.instance.content)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
                 return Response(serializer.data)

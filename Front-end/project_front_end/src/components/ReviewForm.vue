@@ -57,9 +57,11 @@ export default {
         this.createReview(payload)
       } else if (this.action === 'update') {
         const payload = {
+          movie: this.movie.movie_id,
           pk: this.review.pk,
           ...this.newReview,
         }
+        // console.log(payload)
         this.updateReview(payload)
       }
     }
