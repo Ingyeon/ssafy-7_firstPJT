@@ -11,6 +11,7 @@
       <li v-for="review in reviews" :key="review.pk">
         <!-- 작성자 -->
         
+        
         {{ review.user.username }} : 
 
         <!-- 글 이동 링크 (제목) -->

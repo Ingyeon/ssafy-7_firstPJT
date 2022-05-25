@@ -1,17 +1,16 @@
 <template>
   <div>
     <h2> Reviews </h2>
-
-    <ul v-for="review in reviews" :key="review.pk">
-        <li v-if="review.movie === movieId">
+    <b-list-group v-for="review in reviews" :key="review.pk">
+        <b-list-group-item v-if="review.movie === movieId" class="">
           <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
-            <p>title : {{review.title}}</p>
-          </router-link>
+            <span>title : {{review.title}}</span>
+          </router-link> 
           <router-link :to="{name:'profile', params: {username: review.user.username} }"> 
-            <p>작성자 : {{review.user.username}}</p>
+            <span>작성자 : {{review.user.username}}</span>
           </router-link>
-        </li>
-    </ul>
+        </b-list-group-item>
+    </b-list-group>
 
   </div>
 </template>
