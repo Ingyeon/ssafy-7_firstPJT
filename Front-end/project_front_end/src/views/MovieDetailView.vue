@@ -25,7 +25,6 @@
                     <font-awesome-icon v-if="flag==true" icon="fa-regular fa-heart"/>
                     <font-awesome-icon v-else icon="fa-solid fa-heart" class=red />
                     </button>
-
               </b-card-text>
             </b-card-body>
           </b-col>
@@ -69,15 +68,6 @@ export default {
       'fetchMovie',
       'likeMovie',
     ]),
-      likeCheck(){
-      const likedlist = this.like.movie_like
-        if (likedlist.length === 1) {
-          this.likeMovie(this.movieId)
-          return this.flag = true
-        }
-      else if (this.likeMovie(this.movieId))
-      {return this.flag=false}
-    },
   },
 }
 </script>

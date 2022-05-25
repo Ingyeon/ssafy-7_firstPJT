@@ -23,7 +23,6 @@
                     <!-- 좋아요: -->
                     <!-- <button v-if="likeCheck" @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
                     <button v-else @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-regular fa-heart"/></button> -->
-
               </b-card-text>
             </b-card-body>
           </b-col>
@@ -55,39 +54,16 @@ export default {
 
   computed: {
     ...mapGetters(['similardetail','currentUser']),
-    // likeCheck(){
-    //   // 제대로 작동 안하는중 (고쳐야함)
-    //   // movie_like에 유저 id가 일치해야만 하트 표시되게 바꾸기
-    //   let flag = false
-    //   const fol = this.movie.movie_like
-    //     if (fol[0] === this.currentUser.pk) {
-    //       flag = true
-    //     }
-    //   return flag
-    // },
-
-    // setMovieId() {
-    //   console.log('setmovieId')
-    //   return this.movie.movie_id
-    // },
-    
     },
   methods: {
     ...mapActions([
-      'fetchSimilar',
+      'fetchSimilarDetail',
     //   'likeMovie',
     ]),
   },
   created(){
-    console.log('check')
-    // const mId = this.setMovieId()
-    // console.log(mId)
-    // const mid = this.$route.params.movieId
-    // if (mid === null)
-    this.fetchSimilar(this.$route.params.movieId)
-    // this.likeMovie(this.$route.params.movieId)
+    this.fetchSimilarDetail(this.$route.params.movieId)
   }
-  
 }
 </script>
 

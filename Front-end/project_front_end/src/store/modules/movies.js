@@ -19,7 +19,7 @@ export default {
         genre: state => state.genre,
         similar: state => state.similar,
         search: state => state.search,
-        similardetail: state => state.similardetailm,
+        similardetail: state => state.similardetail,
         like: state => state.like,
         // isLoggedIn: state => !!state.token,
         // currentUser: state => state.currentUser,
