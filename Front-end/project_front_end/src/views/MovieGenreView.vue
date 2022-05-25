@@ -3,6 +3,7 @@
     <h3 class="mt-2 mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white">{{genre_name}} 장르의 영화 목록입니다.</h3>
   <GenreMovieList/>
   </div>
+
 </template>
 
 <script>
@@ -17,27 +18,12 @@ export default {
   data() {
     return {
       genreId: this.$route.params.genreId,
-      genre_name: '',
-      movielist : [],
-      curpagenum: 1,
-      datapage : 5
+      genre_name: ''
     }
   },
 
   computed: {
     ...mapGetters(['genre']),
-    startOffset(){
-      return ((this.curpagenum -1) * this.datapage)
-    },
-    endOffset(){
-      return (this.startOffset + this.datapage)
-    },
-    numofpage(){
-      return Math.ceil(this.movielist.length / this.datapage)
-    },
-    calData(){
-      return this.movielist.slice(this.startOffset,this.endOffset)
-    }
   },
   methods: {
     ...mapActions([
@@ -59,15 +45,11 @@ export default {
     else if(this.genreId == 10749){
       return this.genre_name = '로맨스'
     }
-  },
-  },
+  },},
   created(){
     this.fetchGenre(this.genreId)
     this.findGenre()
   },
-  mounted(){
-    this.movielist = this.genre
-  }
 }
 </script>
 

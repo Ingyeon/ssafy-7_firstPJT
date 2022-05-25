@@ -1,8 +1,7 @@
 <template>
     <form @submit.prevent="onSubmit">
-      <div>ReviewForm</div>
       <div>
-        getter : {{movie.movie_id}}<br>
+        리뷰를 쓸 영화 : {{movie.title}}<br>
       </div>
       <div>
         <label for="title">title: </label>
@@ -52,12 +51,14 @@ export default {
       if (this.action === 'create') {
         const payload = {
           movie: this.movie.movie_id,
+          movie_title: this.movie.title,
           ...this.newReview,
         }
         this.createReview(payload)
       } else if (this.action === 'update') {
         const payload = {
           movie: this.movie.movie_id,
+          movie_title: this.movie.title,
           pk: this.review.pk,
           ...this.newReview,
         }

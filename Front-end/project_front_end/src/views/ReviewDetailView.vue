@@ -54,10 +54,12 @@
         'fetchReview',
         'likeReview',
         'deleteReview',
+        'fetchReviews'
       ])
     },
     created() {
       this.fetchReview(this.reviewPk)
+      this.fetchReviews()
     },
   }
 </script>

@@ -69,16 +69,14 @@ export default {
       'likeMovie',
     ]),
       likeCheck(){
-      const likedlist = this.like
-      console.log(likedlist)
-        if (likedlist.movie_like.length === 1) {
+      const likedlist = this.like.movie_like
+        if (likedlist.length === 1) {
           this.likeMovie(this.movieId)
           return this.flag = true
         }
       else if (this.likeMovie(this.movieId))
       {return this.flag=false}
     },
-
   },
 }
 </script>

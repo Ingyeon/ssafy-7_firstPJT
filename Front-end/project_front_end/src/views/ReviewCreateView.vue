@@ -21,6 +21,7 @@ export default {
         content: '',
         rank : null,
         movie: null,
+        movie_title: null,
       }
     }
   }

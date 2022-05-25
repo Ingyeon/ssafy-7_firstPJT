@@ -12,6 +12,7 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_reviews')
     movie = models.IntegerField()
+    movie_title = models.TextField()
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='comments')

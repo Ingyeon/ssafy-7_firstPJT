@@ -45,11 +45,12 @@ export default {
       const reviewlist = []
       for(let reviewitem of this.reviews ) {
         if(reviewitem.movie === this.movieId) {
+          console.log(reviewitem)
             reviewlist.push({
               title: reviewitem.title,
               username: reviewitem.user.username,
               like_count: reviewitem.like_count,
-              movie: reviewitem.movie,
+              movie: reviewitem.movie_title,
               comment_count: reviewitem.comment_count,
             })
         }
