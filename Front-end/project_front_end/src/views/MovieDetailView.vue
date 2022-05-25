@@ -23,7 +23,6 @@
                     좋아요:
                     <button v-if="likeCheck" @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-solid fa-heart" class=red /></button>
                     <button v-else @click="likeMovie(movie.movie_id)"><font-awesome-icon icon="fa-regular fa-heart"/></button>
-
               </b-card-text>
             </b-card-body>
           </b-col>
