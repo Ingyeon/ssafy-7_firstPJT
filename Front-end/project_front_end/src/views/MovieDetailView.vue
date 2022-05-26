@@ -28,6 +28,7 @@
                       <font-awesome-icon v-else icon="fa-solid fa-heart" class=red />
                       </button>
                 </b-card-text>
+                    <router-link :to="{ name: 'reviewCreate' }" class="btn btn-primary my-2" > 새 리뷰 작성 </router-link>
               </div>
             </b-card-body>
           </b-col>
@@ -36,7 +37,7 @@
     </div>
 
     <!-- review -->
-    <router-link :to="{ name: 'reviewCreate' }"> 새 리뷰 작성 </router-link>
+
     <!-- <ReviewList :reviews="review.movie_review"/> -->
     <ReviewList :movieId="movie.movie_id"/>
     <hr>
