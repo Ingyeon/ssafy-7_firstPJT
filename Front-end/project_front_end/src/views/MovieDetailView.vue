@@ -68,7 +68,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'fetchMovie',
       'likeMovie',
     ]),
       likeCheck(){

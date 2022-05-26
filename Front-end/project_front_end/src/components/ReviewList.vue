@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2> Reviews </h2>
-    <b-table hover :items="makeLists()">
+    <b-table hover :items="makeLists()" @row-clicked="rowClick">
       <!-- <template #cell(title)="data">
         <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
             <span>   title : {{review.title}}   </span>
@@ -36,7 +36,7 @@ export default {
     movieId : Number,
   },
   computed: {
-    ...mapGetters(['reviews']),
+    ...mapGetters(['reviews','fetchReviews']),
     
   },
   methods: {
@@ -47,16 +47,26 @@ export default {
         if(reviewitem.movie === this.movieId) {
           console.log(reviewitem)
             reviewlist.push({
-              title: reviewitem.title,
-              username: reviewitem.user.username,
-              like_count: reviewitem.like_count,
-              movie: reviewitem.movie_title,
-              comment_count: reviewitem.comment_count,
+              번호: reviewitem.pk,
+              제목: reviewitem.title,
+              작성자: reviewitem.user.username,
+              좋아요: reviewitem.like_count,
+              영화: reviewitem.movie_title,
+              댓글: reviewitem.comment_count,
             })
         }
       }
       return reviewlist
-    },  
+    },
+      rowClick(item){
+      console.log(item)
+      this.$router.push({
+        path: `/community/${item.번호}`
+      })
+    }    
+  },
+  created(){
+    this.fetchReviews()
   }
 }
 </script>
