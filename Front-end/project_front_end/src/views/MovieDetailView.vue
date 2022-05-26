@@ -36,9 +36,6 @@
       </b-card>
     </div>
 
-    <!-- review -->
-
-    <!-- <ReviewList :reviews="review.movie_review"/> -->
     <ReviewList :movieId="movie.movie_id"/>
     <hr>
     <h2 class='mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white'>{{movie.title}}을 보신 분들이 같이 찾은 영화는 어떠세요?</h2>

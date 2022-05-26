@@ -4,7 +4,7 @@
     <similarCard v-for="similardetail in similar" :similardetail="similardetail" :key="similardetail.movieId"  class='mcs mx-2 row row-col-4'/>
     </b-card-group>
   </div>
-</template>`1`
+</template>
 
 <script>
   import similarCard from '@/components/similarCard.vue'

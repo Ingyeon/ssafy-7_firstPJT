@@ -79,8 +79,7 @@ export default {
     },
 
     // 리뷰 수정
-    updateReview({ commit, getters }, { pk, title, content, rank, movie }) {
-      console.log(pk, title, content, rank)
+    updateReview({ commit, getters }, { pk, title, content, rank, movie,poster_path }) {
       axios({
         url: drf.community.review(pk), // ok
         method: 'put', // ok 
@@ -89,11 +88,11 @@ export default {
           content, 
           rank,
           movie,
+          poster_path,
         },
         headers: getters.authHeader,
       })
         .then(res => {
-          console.log(res.data)
           commit('SET_REVIEW', res.data)
 
           router.push({

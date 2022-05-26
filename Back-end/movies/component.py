@@ -17,9 +17,6 @@ def movie_API(page):
         }
         movies = requests.get(url + path+'?',params=params).json()
         
-        # 이 부분이 json 데이터를 장고의 데이터 형식으로 파싱시키기 위함입니다.
-        # instance 내부의 변수명은 model의 필드명이니 이 부분은 맞게 넣으시면 됩니다.
-        
         for movie in movies['results']:
             instance = Movie.objects.create(
             title = movie['title'],

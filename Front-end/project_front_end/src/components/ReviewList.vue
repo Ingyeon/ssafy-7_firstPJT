@@ -2,13 +2,6 @@
   <div>
     <h2> Reviews </h2>
     <b-table hover :items="makeLists()" @row-clicked="rowClick">
-      <!-- <template #cell(title)="data">
-        <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
-            <span>   title : {{review.title}}   </span>
-          </router-link>
-          {{data.title}}
-      </template> -->
-
     </b-table>
 
   </div>
@@ -21,12 +14,12 @@ export default {
   props: {
     movieId : Number,
   },
+
   computed: {
     ...mapGetters(['reviews']),
-    
+
   },
   methods: {
-    // movie id에 맞는 리뷰 리스트
     makeLists(){
       const reviewlist = []
       for(let reviewitem of this.reviews ) {

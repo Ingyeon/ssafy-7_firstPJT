@@ -1,13 +1,12 @@
 <template>
   <div>
-    ReviewEdit
+    <h2 class="my-2">리뷰 수정</h2>
     <ReviewForm v-if="isReview" :review="review" action="update"/>
   </div>
   
 </template>
 
 <script>
-// 수정 해야함
 
 import ReviewForm from '@/components/ReviewForm.vue'
 import { mapGetters, mapActions } from 'vuex'
@@ -22,6 +21,9 @@ export default {
   methods: {
     ...mapActions(['fetchReview'])
   },
+  created(){
+    this.fetchReview(this.$route.params.reviewPk)
+  }
 }
 </script>
 

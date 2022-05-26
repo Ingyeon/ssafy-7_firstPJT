@@ -21,9 +21,6 @@ export default {
         search: state => state.search,
         similardetail: state => state.similardetail,
         like: state => state.like,
-        // isLoggedIn: state => !!state.token,
-        // currentUser: state => state.currentUser,
-        // authHeader: state => ({ Authorization: `Token ${state.token}`})
     },
     
     mutations: {
@@ -34,27 +31,9 @@ export default {
         SET_SEARCH: (state,search) => state.search = search,
         SET_SIMILARDETAIL: (state,similardetail) => state.similardetail = similardetail,
         SET_LIKE: (state,like) => state.like = like
-        // SET_CURRENT_USER: (state, user) => state.currentUser = user,
     },
   
     actions: {
-        // fetchCurrentUser({ commit, getters, dispatch }) {
-      
-        //     if (getters.isLoggedIn) {
-        //       axios({
-        //         url: drf.accounts.currentUserInfo(),
-        //         method: 'get',
-        //         headers: getters.authHeader,
-        //       })
-        //         .then(res => commit('SET_CURRENT_USER', res.data))
-        //         .catch(err => {
-        //           if (err.response.status === 401) {
-        //             dispatch('removeToken')
-        //             router.push({ name: 'login' })
-        //           }
-        //         })
-        //     }
-        //   },
 
         // 영화 전체 목록 state 저장
         fetchMovies({ commit, getters }){

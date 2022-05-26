@@ -32,8 +32,8 @@
           <template #button-content>
             <em>guest</em>
           </template>
-          <b-dropdown-item :to="{ name: 'login' }">Login</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'signup' }">signup</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'login' }">로그인</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'signup' }">회원 가입</b-dropdown-item>
         </b-nav-item-dropdown>
         <!-- 로그인 아닐 경우 -->
         <b-nav-item-dropdown right v-if="isLoggedIn" class="ml-auto">

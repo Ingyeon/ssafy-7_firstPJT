@@ -3,7 +3,6 @@
     <h3 class="mt-2 mx-auto mb-3 w-50 my-3 p-3 mb-2 bg-secondary bg-gradient text-white">{{genre_name}} 장르의 영화 목록입니다.</h3>
   <GenreMovieList/>
   </div>
-
 </template>
 
 <script>

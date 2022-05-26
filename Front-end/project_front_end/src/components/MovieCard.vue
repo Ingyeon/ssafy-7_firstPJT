@@ -52,14 +52,14 @@
   .movietitle {
     line-height: 84px;
     vertical-align: middle;
-    /* font-size: 24px; */
+
   }
 
   #moviecard {
     height : 518px;
     width : 318px;
     padding-bottom: 0px;
-    /* background-color: #6c757d; */
+
   }
 
   #bcardtitle h4 {

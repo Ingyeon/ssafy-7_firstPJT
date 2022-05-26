@@ -16,7 +16,6 @@ def user_profile(request,username):
 
 @api_view(['POST'])
 def follow(request,user_pk):
-    # if request.user.is_authenticated:
     you = get_object_or_404(get_user_model(), pk=user_pk)
     me = request.user # 로그인 유저가 되어야함.
     if me != you:

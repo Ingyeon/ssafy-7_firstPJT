@@ -17,7 +17,7 @@
     <div style="max-width: 800px;" class="mx-auto my-4">
       <h4>{{profile.username}} 님이 좋아요한 영화</h4>
       <b-list-group>
-        <!-- 주석 풀고 영화 리스트로 -->
+        <!-- 영화 리스트로 -->
         <b-list-group-item v-for="review in profile.reviews" :key="review.pk">
           <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
             {{ review.title }}
@@ -38,10 +38,6 @@
       </b-list-group>
     </div>
 
-
-    <!-- 좋아요, 찜한 영화 리스트 -->
-
-    <!-- 추천 알고리즘 영화리스트 -->
   </div>
 </template>
 

@@ -9,28 +9,6 @@ from .models import Review,Comment,Movie
 from .serializers.comment import CommentSerializer
 from .serializers.review import ReviewListSerializer,ReviewSerializer
 
-# Response(status.HTTP_400_BAD_REQUEST)는 api 정상작동 여부 확인 위해 사용
-
-# # 리뷰 목록 확인 및 생성용 api
-# @api_view(['GET','POST'])
-# def review_list_or_create(request):
-#     if request.method == 'GET':
-#         reviews = Review.objects.annotate(
-#             comment_count = Count('comments', distinct=True),
-#             like_count = Count('like_users', distinct=True)).order_by('-pk')
-        
-#         serializer = ReviewListSerializer(reviews,many=True)
-#         return Response(serializer.data)
-    
-#     elif request.method == 'POST':
-#         serializer = ReviewSerializer(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
-#     # get과 post 제외한 요청은 400 에러 응답    
-#     return Response(status.HTTP_400_BAD_REQUEST)
-
 # 리뷰리스트 가져오기
 @api_view(['GET'])
 def review_list(request):

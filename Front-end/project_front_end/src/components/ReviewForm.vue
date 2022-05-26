@@ -97,7 +97,6 @@ export default {
           pk: this.review.pk,
           ...this.newReview,
         }
-        // console.log(payload)
         this.updateReview(payload)
       }
     }
