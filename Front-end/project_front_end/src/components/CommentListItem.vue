@@ -1,25 +1,21 @@
 <template>
-  <ol class="list-group w-75 mx-auto">
-    <li class="list-group-item d-flex justify-content-between align-items-start" >
-    <div class="ms-2 me-auto">
+  <ol class="list-group list-group-horizontal w-75 mx-auto">
+      <li class="list-group-item">
     <router-link class='fw-bold' :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link>
-    <span v-if="!isEditing">{{ payload.content }}</span>
-        <span v-if="isEditing">
+      </li>
+    <li class="list-group-item flex-fill" v-if="!isEditing">{{ payload.content }}</li>
+        <li v-if="isEditing" >
       <input type="text" v-model="payload.content">
-      <button @click="onUpdate" class='badge bg-primary rounded-pill mr-4'>Update</button> 
-      <button @click="switchIsEditing" class='badge bg-primary rounded-pill'>Cancel</button>
-    </span>
+      <button @click="onUpdate" class='badge bg-primary rounded-pill mx-1 mt-2'>Update</button> 
+      <button @click="switchIsEditing" class='badge bg-danger rounded-pill'>Cancel</button>
+    </li>
 
     <span v-if="currentUser.username === comment.user.username && !isEditing">
-      <button @click="switchIsEditing" class='badge bg-primary rounded-pill'>Edit</button> 
-      <button @click="deleteComment(payload)" class='badge bg-primary rounded-pill'>Delete</button>
+      <button @click="switchIsEditing" class='badge bg-primary rounded-pill mx-1 mt-2'>Edit</button> 
+      <button @click="deleteComment(payload)" class='badge bg-danger rounded-pill'>Delete</button>
     </span>
-    </div>
-
-
-    </li>
   </ol>
 </template>
 
