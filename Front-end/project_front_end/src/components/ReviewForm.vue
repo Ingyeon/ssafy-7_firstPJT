@@ -20,13 +20,6 @@
                   줄거리 : <br>
                   {{ movie.overview }}
                 </b-card-text>
-                <b-card-text>
-                      좋아요:
-                      <button @click="likeCheck()" class="like-button">
-                      <font-awesome-icon v-if="flag==true" icon="fa-regular fa-heart"/>
-                      <font-awesome-icon v-else icon="fa-solid fa-heart" class=red />
-                      </button>
-                </b-card-text>
               </div>
             </b-card-body>
           </b-col>

@@ -21,9 +21,6 @@ export default {
   methods: {
     ...mapActions(['fetchReview'])
   },
-  created(){
-    this.fetchReview(this.$route.params.reviewPk)
-  }
 }
 </script>
 

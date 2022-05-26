@@ -79,7 +79,7 @@ export default {
     },
 
     // 리뷰 수정
-    updateReview({ commit, getters }, { pk, title, content, rank, movie,poster_path }) {
+    updateReview({ commit, getters }, { pk, title, content, rank, movie,poster_path,movie_title }) {
       axios({
         url: drf.community.review(pk), // ok
         method: 'put', // ok 
@@ -89,6 +89,7 @@ export default {
           rank,
           movie,
           poster_path,
+          movie_title,
         },
         headers: getters.authHeader,
       })
