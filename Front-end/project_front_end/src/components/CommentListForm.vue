@@ -33,6 +33,7 @@ export default {
 }
 </script>
 
+
 <style>
 .comment-list-form {
   margin-bottom: 1em;

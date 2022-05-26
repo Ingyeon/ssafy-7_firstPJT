@@ -49,6 +49,12 @@
   h4.card-title.movietitle {
     line-height: 92px;
     vertical-align: middle;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   #moviecard {

@@ -13,7 +13,7 @@
       >
       <b-card-img :src= "`https://image.tmdb.org/t/p/w300${movie.poster_path}`" id="card-img"/>
       <div id="bcardtitle">
-        <b-card-title class="movietitle " title-tag="div"> {{ movie.title }} </b-card-title>
+        <b-card-title class="movietitle "> {{ movie.title }} </b-card-title>
       </div>
       
       </b-card>
@@ -64,6 +64,11 @@
 
   #bcardtitle h4 {
     text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
   
 </style>
