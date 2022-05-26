@@ -89,10 +89,7 @@ export default {
     },
   },
   created(){
-    console.log(this.like.movie_id)
-    console.log(this.movieId)
     this.likeCheck()
-    console.log(this.flag)
   }
 }
 </script>

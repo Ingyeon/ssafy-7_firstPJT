@@ -11,20 +11,6 @@
 
     </b-table>
 
-    <b-list-group v-for="review in reviews" :key="review.pk">
-        <b-list-group-item v-if="review.movie === movieId" class="">
-          <router-link :to="{name:'review', params: {reviewPk: review.pk} }"> 
-            <span>   title : {{review.title}}   </span>
-          </router-link> 
-          <router-link :to="{name:'profile', params: {username: review.user.username} }"> 
-            <span>   작성자 : {{review.user.username}}   </span>
-          </router-link>
-          <span>
-            {{review.like_count}}
-          </span>
-        </b-list-group-item>
-    </b-list-group>
-
   </div>
 </template>
 

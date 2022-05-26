@@ -1,9 +1,18 @@
 <template>
-  <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
-    <button>Comment</button>
-  </form>
+  <div class="d-flex comment-list-form w-50 mx-auto">
+    <b-input-group class="mt-3">
+    <b-input-group-text class="height">댓글</b-input-group-text>
+  <b-form-textarea @submit.prevent="onSubmit" 
+  id="textarea"
+  v-model="content"
+  placeholder="댓글을 달아주세요"
+  required>
+     </b-form-textarea>
+           <b-input-group-append>
+                  <b-button variant="info" class="height mx-1"  @click="onSubmit">작성하기</b-button>
+           </b-input-group-append>
+  </b-input-group>
+  </div>
 </template>
 
 <script>
@@ -12,6 +21,7 @@ export default {
   name: 'CommentListForm',
   data() {
     return {
+      name: "댓글",
       content: ''
     }
   },
@@ -21,7 +31,7 @@ export default {
   methods: {
     ...mapActions(['createComment']),
     onSubmit() {
-      this.createComment({ reviewPk: this.review.pk, content: this.content, })
+      this.createComment({ reviewPk: this.review.pk, content: this.content})
       this.content = ''
     }
   }
@@ -30,7 +40,10 @@ export default {
 
 <style>
 .comment-list-form {
-  margin: 1rem;
+  margin-bottom: 1em;
   padding: 1rem;
+}
+.height {
+  height: 70px;
 }
 </style>

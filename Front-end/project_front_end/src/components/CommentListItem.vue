@@ -1,22 +1,26 @@
 <template>
-  <li class="comment-list-item">
-    <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
+  <ol class="list-group w-75 mx-auto">
+    <li class="list-group-item d-flex justify-content-between align-items-start" >
+    <div class="ms-2 me-auto">
+    <router-link class='fw-bold' :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
-    </router-link>: 
-    
+    </router-link>
     <span v-if="!isEditing">{{ payload.content }}</span>
-
-    <span v-if="isEditing">
+        <span v-if="isEditing">
       <input type="text" v-model="payload.content">
-      <button @click="onUpdate">Update</button> |
-      <button @click="switchIsEditing">Cancel</button>
+      <button @click="onUpdate" class='badge bg-primary rounded-pill mr-4'>Update</button> 
+      <button @click="switchIsEditing" class='badge bg-primary rounded-pill'>Cancel</button>
     </span>
 
     <span v-if="currentUser.username === comment.user.username && !isEditing">
-      <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteComment(payload)">Delete</button>
+      <button @click="switchIsEditing" class='badge bg-primary rounded-pill'>Edit</button> 
+      <button @click="deleteComment(payload)" class='badge bg-primary rounded-pill'>Delete</button>
     </span>
-  </li>
+    </div>
+
+
+    </li>
+  </ol>
 </template>
 
 <script>
