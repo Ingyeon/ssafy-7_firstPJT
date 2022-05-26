@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link :to="{name: 'profile', params: {username:review.user.username}}">{{review.user.username}}</router-link>
     <h1>{{ review.title }}</h1>
 
     <p>

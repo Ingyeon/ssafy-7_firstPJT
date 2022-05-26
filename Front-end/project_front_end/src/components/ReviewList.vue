@@ -36,7 +36,7 @@ export default {
     movieId : Number,
   },
   computed: {
-    ...mapGetters(['reviews','fetchReviews']),
+    ...mapGetters(['reviews']),
     
   },
   methods: {
@@ -45,7 +45,6 @@ export default {
       const reviewlist = []
       for(let reviewitem of this.reviews ) {
         if(reviewitem.movie === this.movieId) {
-          console.log(reviewitem)
             reviewlist.push({
               번호: reviewitem.pk,
               제목: reviewitem.title,
@@ -59,15 +58,11 @@ export default {
       return reviewlist
     },
       rowClick(item){
-      console.log(item)
       this.$router.push({
         path: `/community/${item.번호}`
       })
     }    
   },
-  created(){
-    this.fetchReviews()
-  }
 }
 </script>
 

@@ -23,8 +23,8 @@
                 </b-card-text>
                 <b-card-text>
                       좋아요:
-                      <button @click="likeCheck()" class="like-button">
-                      <font-awesome-icon v-if="flag==true" icon="fa-regular fa-heart"/>
+                      <button @click="makelike()" class="like-button">
+                      <font-awesome-icon v-if="flag==false" icon="fa-regular fa-heart"/>
                       <font-awesome-icon v-else icon="fa-solid fa-heart" class=red />
                       </button>
                 </b-card-text>
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       movieId: this.$route.params.movieId,
-      flag: true
+      flag: {}
     }
   },
 
@@ -70,16 +70,30 @@ export default {
     ...mapActions([
       'likeMovie',
     ]),
+    makelike(){
+      this.likeMovie(this.movieId)
+      if (this.flag == false){
+        return this.flag = true
+      }
+      else {
+        return this.flag = false
+      }
+    },
+
       likeCheck(){
-      const likedlist = this.like.movie_like
-        if (likedlist.length === 1) {
-          this.likeMovie(this.movieId)
+        if (this.like.movie_Id == this.movieId) {
           return this.flag = true
         }
-      else if (this.likeMovie(this.movieId))
-      {return this.flag=false}
+        else if (this.like.movie_Id != this.movieId)
+        {return this.flag = false}
     },
   },
+  created(){
+    console.log(this.like.movie_id)
+    console.log(this.movieId)
+    this.likeCheck()
+    console.log(this.flag)
+  }
 }
 </script>
 
