@@ -18,9 +18,9 @@
       <h4>{{profile.username}} 님이 좋아요한 영화</h4>
       <b-list-group>
         <!-- 영화 리스트로 -->
-        <b-list-group-item v-for="review in profile.reviews" :key="review.pk">
-          <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
-            {{ review.title }}
+        <b-list-group-item>
+          <router-link :to="{ name: 'MovieDetail', params: { movieId: like.movie_id } }">
+          {{like.title}}
           </router-link>
         </b-list-group-item>
       </b-list-group>
@@ -69,6 +69,7 @@ export default {
     ...mapActions(['fetchProfile', 'fetchCurrentUser','follow']),
   },
   created(){
+
     const payload = { username: this.$route.params.username }
     this.fetchProfile(payload)
   },
