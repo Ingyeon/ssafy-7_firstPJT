@@ -11,7 +11,7 @@ export default {
         similar: [],
         search: [],
         similardetail: [],
-        like: [],
+        like: {},
     },
     getters: {
         movies: state => state.movies,

@@ -13,7 +13,7 @@
           <b-form-input id="password" v-model="credentials.password" placeholder="Enter Password" type="password" required />
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="mt-3">Login</b-button>
+        <b-button type="submit" variant="primary" class="mt-3">로그인</b-button>
       </b-form>
     </div>
   </div>

@@ -40,8 +40,8 @@
           <template #button-content>
             <em class="text-align-center">{{username}}</em>
           </template>
-          <b-dropdown-item :to="{ name:'profile', params: { username: username }}">Profile</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'logout' }">Logout</b-dropdown-item>
+          <b-dropdown-item :to="{ name:'profile', params: { username: username }}">프로필</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'logout' }">로그아웃</b-dropdown-item>
         </b-nav-item-dropdown>
 
       </b-navbar-nav>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    Logout
+    로그아웃
   </div>
 </template>
 

@@ -110,7 +110,6 @@ def search_API(movie_title):
         overview = movie['overview'],
         poster_path = movie['poster_path'],
         movie_id = movie['id'],
-        genre_id = movie['genre_ids'][0],
         )
         instance.save()
     return movies

@@ -27,7 +27,6 @@ def movie_detail(request,movie_id):
 def like_movie(request,movie_id):
     movie = get_object_or_404(Movie, movie_id=movie_id)
     user = request.user
-    print(movie)
     
     # 영화 좋아요 했다면 좋아요 취소
     if movie.movie_like.filter(pk=user.pk).exists():

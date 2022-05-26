@@ -69,7 +69,6 @@ export default {
     ...mapActions(['fetchProfile', 'fetchCurrentUser','follow']),
   },
   created(){
-    console.log(this.like)
     const payload = { username: this.$route.params.username }
     this.fetchProfile(payload)
   },
