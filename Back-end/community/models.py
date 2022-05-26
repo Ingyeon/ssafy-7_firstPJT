@@ -13,6 +13,7 @@ class Review(models.Model):
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_reviews')
     movie = models.IntegerField()
     movie_title = models.TextField()
+    poster_path = models.CharField(max_length=200, null=True)
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='comments')

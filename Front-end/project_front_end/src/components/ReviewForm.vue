@@ -85,6 +85,7 @@ export default {
         const payload = {
           movie: this.movie.movie_id,
           movie_title: this.movie.title,
+          poster_path: this.movie.poster_path,
           ...this.newReview,
         }
         this.createReview(payload)
@@ -92,6 +93,7 @@ export default {
         const payload = {
           movie: this.movie.movie_id,
           movie_title: this.movie.title,
+          poster_path: this.movie.poster_path,
           pk: this.review.pk,
           ...this.newReview,
         }
