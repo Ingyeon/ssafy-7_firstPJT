@@ -9,31 +9,36 @@
     </div>
     <div v-if="profile.pk !== currentUser.pk">
       <!-- 팔로우 버튼 -->
-      <button v-if="checkList" @click="follow(profile.pk)"> 언팔로우 </button>
-      <button v-else @click="follow(profile.pk)"> 팔로우 </button>
+      <b-button variant="dark" v-if="checkList" @click="follow(profile.pk)"> 언팔로우 </b-button>
+      <b-button variant="outline-dark" v-else @click="follow(profile.pk)"> 팔로우 </b-button>
     </div>
     <hr>
     <!-- 좋아요한 영화 목록 -->
-    <div>
-      <h2>{{profile.username}} 님이 좋아요한 영화</h2>
-      <ul>
-        <li>
-          <p>{{like.title}}</p>
-        </li>
-        
-      </ul>
+    <div style="max-width: 800px;" class="mx-auto my-4">
+      <h4>{{profile.username}} 님이 좋아요한 영화</h4>
+      <b-list-group>
+        <!-- 주석 풀고 영화 리스트로 -->
+        <b-list-group-item v-for="review in profile.reviews" :key="review.pk">
+          <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
+            {{ review.title }}
+          </router-link>
+        </b-list-group-item>
+      </b-list-group>
     </div>
-
     
     <!-- 작성한 리뷰 목록-->
-    <h2>{{profile.username}} 님이 작성한 리뷰</h2>
-    <ul>
-      <li v-for="review in profile.reviews" :key="review.pk">
-        <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
-          {{ review.title }}
-        </router-link>
-      </li>
-    </ul>
+    <div style="max-width: 800px;" class="mx-auto my-5">
+      <h4>{{profile.username}} 님이 작성한 리뷰</h4>
+      <b-list-group>
+        <b-list-group-item v-for="review in profile.reviews" :key="review.pk">
+          <router-link :to="{ name: 'review', params: { reviewPk: review.pk } }">
+            {{ review.title }}
+          </router-link>
+        </b-list-group-item>
+      </b-list-group>
+    </div>
+
+
     <!-- 좋아요, 찜한 영화 리스트 -->
 
     <!-- 추천 알고리즘 영화리스트 -->
@@ -46,7 +51,6 @@ export default {
   name: 'ProfileView',
   computed: {
     ...mapGetters(['profile','currentUser','like']),
-    // 자바스크립트 어케고치기
     checkList() {
       let flag = false
       const fol = this.profile.followers
@@ -77,5 +81,8 @@ export default {
 </script>
 
 <style>
-
+  a {
+    text-decoration: none;
+    color:#2c3e50 ;
+  }
 </style>

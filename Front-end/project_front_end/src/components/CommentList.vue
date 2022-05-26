@@ -1,6 +1,6 @@
 <template>
   <div>
-  <h3> 댓글 목록</h3>
+  <h4> 댓글 목록</h4>
       <CommentListItem
         v-for="comment in comments" 
         :comment="comment" 
